@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="ja-jp">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<title>STOP! パスワード使い回し!キャンペーン2018</title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	
+	<meta property="og:locale" content="ja_JP" />
+	<meta property="og:site_name" content="JPCERT/CC" />
+	<meta property="og:url" content="http://www.jpcert.or.jp/pr/2018/stop-password2018.html">
+	<meta property="og:title" content="STOP! パスワード使い回し!キャンペーン2018">
+	
+	<meta property="og:image" content="http://www.jpcert.or.jp/common/image/ogp_image.jpg">
+	
+	
+	<link rel="alternate" type="application/rss+xml" title="注意喚起、Weekly Report、脆弱性情報（JVN）、JPCERT/CCからのお知らせやイベントの新着情報をまとめて提供" href="/rss/jpcert-all.rdf" />
+	<link rel="alternate" type="application/rss+xml" title="注意喚起と緊急報告、Weekly Report の新着情報" href="/rss/jpcert.rdf" />
+	<link rel="alternate" type="application/rss+xml" title="JPCERT/CCからのお知らせ、イベントの新着情報" href="/rss/whatsnew.rdf" />
+	<link rel="stylesheet" href="/common/css/html5reset-1.6.1.css">
+	<link rel="stylesheet" href="/common/css/common.css">
+	<link rel="stylesheet" href="/common/css/page.css">
+	<link rel="stylesheet" href="/common/css/print.css" media="print" />
+	<link rel="stylesheet" href="/common/slide/slide.css"/>
+	
+	<link rel="stylesheet" href="/common/css/pr.css">
+	
+</head>
+<body class="category_a">
+
+
+<!-- guidance_sp -->
+<div id="guidance_sp" style="display:none;">
+<div class="title"><img src="/common/guidance/g_guidance_title.png" alt="スマートフォン用で表示" /><a href="/m/pr/2018/stop-password2018.html" id="show_sp_site"><img src="/common/guidance/g_button_show.png" alt="" /></a></div>
+<div class="message"><a href="javascript:;" id="check_no_message"><img src="/common/guidance/g_check_off.png" alt="" /><img src="/common/guidance/g_guidance_message.png" alt="" /></a></div>
+</div>
+<!-- /guidance_sp -->
+
+<header class="sh_uoh">
+	<div class="top">
+		<h2><img src="/common/image/h2_image.png" width="330" height="25" alt="サイバーインシデントがなくなるその日まで" /></h2>
+		<ul>
+			<li><a href="/reference.html">お問い合わせ</a></li>
+			<li><a href="/recruit/index.html">採用情報</a></li>
+			<li><a href="/sitemap.html">サイトマップ</a></li>
+			<li><a href="/english/">English</a></li>
+		</ul>
+	</div>
+
+	<div class="main">
+		<h1><a href="/"><img src="/common/image/header_logo.svg" width="198" height="66" alt="JPCERT Coordination Center" /></a></h1>
+		<ul class="links">
+			<li class="icon_rss">最新情報を取得 (<a href="/rss/">RSS</a> | <a href="/announce.html">メーリングリスト</a>) </li>
+			<li><a href="https://www.jpcert.or.jp/" class="icon_https">HTTPS</a></li>
+			<li><a href="/m/" class="icon_mobile">モバイル</a></li>
+		</ul>
+
+<!-- googlr search area
+		<div class="search_area">
+			<form id="cse-search-box" action="https://www.google.com/cse">
+				<input value="011276954563619633753:gam5ydxz2ni" name="cx" type="hidden">
+				<input value="UTF-8" name="ie" type="hidden">
+				<input name="q" id="q" value="" type="text" placeholder="検索キーワードを入力" /><input name="sa" id="sa" type="submit" value="検索" />
+			</form>
+		</div>
+-->
+		
+		
+		<div id="yahoo_search_area" class="watermark">
+
+			<form action="https://custom.search.yahoo.co.jp/search" method="get" id="srch">
+				<p id="srchForm">
+					<input type="text" name="p" id="srchInput"><input type="submit" value="検索" id="srchBtn" onclick="document.getElementById('srchInput').focus();">
+					<input type="hidden" id="fr" name="fr" value="cse">
+					<input type="hidden" id="ei" name="ei" value="UTF-8">
+					<input type="hidden" id="csid" name="csid" value="YZgbsqsHFIwmPApo7sIjK_PtheLpmwnBs_eTDxVthQ--">
+				</p>
+				<input type="hidden" name="vs" value="www.jpcert.or.jp" id="yjInsite">
+			</form>
+		</div>
+		<script type="text/javascript">
+			(function() {
+			var sb = document.getElementById('srchBox');
+			if (sb && sb.className == 'watermark') {
+  			var si = document.getElementById('srchInput');
+  			var f = function() { si.className = 'nomark'; };
+  			var b = function() {
+    			if (si.value == '') {
+      			si.className = '';
+    			}
+  			};
+  			si.onfocus = f;
+  			si.onblur = b;
+  			if (!/[&?]p=[^&]/.test(location.search)) {
+    			b();
+  			} else {
+    			f();
+  			}
+			}
+			})();
+			</script>
+			
+	</div>
+</header>
+
+<nav>
+	<ul class="menu contents_area_view">
+		<li class="category_a "><a href="/aboutincident.html">インシデントとは</a></li>
+		<li class="category_a ">
+			<a href="/menu_alertsandadvisories.html">緊急情報を確認する</a>
+			<div class="detail_menu contents_area_view">
+				<div class="container cf">
+					<div class="detail_menu_title">緊急情報を確認する</div>
+					<div class="detail_menu_area cf">
+						<ul class="fl">
+							<li><a href="/at/">注意喚起</a></li>
+							<li><a href="/tsubame/">インターネット定点観測</a></li>
+						</ul>
+						<ul class="fl">
+							<li><a href="https://jvn.jp/">JVN</a></li>
+							<li><a href="/vh/top.html">脆弱性対策情報</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</li>
+		<li class="category_a ">
+			<a href="/menu_reporttojpcert.html">JPCERT/CCに依頼する</a>
+			<div class="detail_menu contents_area_view">
+				<div class="container cf">
+					<div class="detail_menu_title">JPCERT/CCに依頼する</div>
+					<div class="detail_menu_area cf">
+						<ul class="fl">
+							<li><a href="/ir/">インシデント対応とは</a></li>
+							<li><a href="/form/">インシデント対応依頼</a></li>
+						</ul>
+						<ul class="fl">
+							<li><a href="/ics/ics-form.html">制御システムインシデント対応依頼</a></li>
+							<li><a href="/ir/status.html">インシデント対応状況</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</li>
+		<li class="category_a ">
+			<a href="/menu_documents.html">公開資料を見る</a>
+			<div class="detail_menu contents_area_view">
+				<div class="container cf">
+					<div class="detail_menu_title">公開資料を見る</div>
+					<div class="detail_menu_area cf">
+						<ul class="fl">
+							<li><a href="/wr/">Weekly Report</a></li>
+							<li><a href="/research/">研究・調査レポート</a></li>
+							<li><a href="/ir/report.html">インシデント報告対応レポート</a></li>
+							<li><a href="/tsubame/report/">インターネット定点観測レポート</a></li>
+							<li><a href="/pr/">活動四半期レポート</a></li>
+						</ul>
+						<ul class="fl">
+							<li><a href="/csirt_material/">CSIRTマテリアル</a></li>
+							<li><a href="/securecoding/">セキュアコーディング</a></li>
+							<li><a href="/report/press.html">ソフトウェア等の脆弱性関連情報に関する届出状況</a></li>
+							<li><a href="/ics/">制御システムセキュリティ</a></li>
+							<li><a href="/magazine/">ライブラリ</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</li>
+		<li class="category_a ">
+			<a href="/menu_receiveinformation.html">情報を受け取る</a>
+			<div class="detail_menu contents_area_view">
+				<div class="container cf">
+					<div class="detail_menu_title">情報を受け取る</div>
+					<div class="detail_menu_area cf">
+						<ul class="fl">
+							<li><a href="/wwinfo/">早期警戒情報</a></li>
+							<li><a href="/ics/ics-community.html">制御システムセキュリティ情報</a></li>
+							<li><a href="/vh/register.html">製品開発者登録</a></li>
+						</ul>
+						<ul class="fl">
+							<li><a href="/announce.html">メーリングリスト</a></li>
+							<li><a href="/rss/">RSS</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</li>
+		<li class="category_b ">
+			<a href="/menu_columnblog.html">コラム＆ブログ</a>
+			<div class="detail_menu contents_area_view">
+				<div class="container cf">
+					<div class="detail_menu_title">コラム＆ブログ</div>
+					<div class="detail_menu_area cf">
+						<ul class="fl">
+							<li><a href="/magazine/acreport.html">分析センターだより</a></li>
+							<li><a href="/magazine/irreport.html">インシデントレスポンスだより</a></li>
+						</ul>
+						<ul class="fl">
+							<li><a href="/newsflash/">CyberNewsFlash</a></li>
+							<li><a href="/column/udrp.html">偽JPCERTドメイン名を取り戻すための60日間</a></li>
+							<li><a href="http://blog.jpcert.or.jp/">英語ブログ</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</li>
+		<li class="category_b selected">
+			<a href="/menu_aboutjpcert.html">JPCERT/CCについて</a>
+			<div class="detail_menu contents_area_view">
+				<div class="container cf">
+					<div class="detail_menu_title">JPCERT/CCについて</div>
+					<div class="detail_menu_area cf">
+						<ul class="fl">
+							<li><a href="/press/">プレスリリース</a></li>
+							<li><a href="/about/">JPCERT/CCとは</a></li>
+							<li class="level2"><a href="/message.html">代表理事挨拶</a></li>
+							<li class="level2"><a href="/profile.html">組織概要</a></li>
+							<li class="level2"><a href="/about/01.html">事業概要</a></li>
+							<li><a href="/recruit/">採用情報</a></li>
+							<li><a href="/solicitation/">公募・入札情報</a></li>
+						</ul>
+						<ul class="fl">
+							<li><a href="/event/">イベント</a></li>
+							<li><a href="/kouen/">講演・執筆一覧</a></li>
+							<li><a href="/magazine/chronology/">セキュリティインシデント年表</a></li>
+							<li><a href="/twitter.html">Twitter一覧</a></li>
+							<li><a href="/jpcert-pgp.html">PGP公開鍵</a></li>
+							<li><a href="/related/">関連組織</a></li>
+							<li><a href="/reference.html">お問い合わせ</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</li>
+	</ul>
+</nav>
+
+<div class="breadcrumb_list_area contents_area_view sh_uoh cf">
+	<ul class="breadcrumb_list fl">
+		<li><a href="/">HOME</a></li><li><a href="/menu_aboutjpcert.html">JPCERT/CCについて</a></li><li>STOP! パスワード使い回し!キャンペーン2018</li>
+	</ul>
+	
+	<ul id="page_layout_utility" class="page_layout_utility fr" style="display:none;">
+		<li class="to_normal_layout_group"><a href="javascript:;" class="icon_normal_layout">通常レイアウトに戻す</a></li>
+		<li class="to_normal_layout_group"><a href="javascript:;" class="icon_print">印刷</a></li>
+		<li class="to_print_layout_group"><a href="javascript:;" class="icon_print_layout">印刷用レイアウト</a></li>
+		<li class="to_print_layout_group"><span class="icon_print_disabled">印刷</span></li>
+	</ul>
+	
+</div>
+
+
+<div class="contents_body contents_area_view cf">
+	<div id="link_pgtop" class="contents_right_body">
+		<div class="contents_right_body_wrapper">
+			<div class="page_title_area">
+				<h3>STOP! パスワード使い回し!キャンペーン2018</h3>
+				<span>最終更新: 2018-08-02</span>
+			</div>
+
+			<div class="contents_container">
+<div class="social_links cf">
+	<div class="mail">
+		<a href="mailto:?subject=STOP!%20%E3%83%91%E3%82%B9%E3%83%AF%E3%83%BC%E3%83%89%E4%BD%BF%E3%81%84%E5%9B%9E%E3%81%97!%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%9A%E3%83%BC%E3%83%B32018&amp;body=http%3A%2F%2Fwww.jpcert.or.jp%2Fpr%2F2018%2Fstop-password2018.html">
+			<img src="/common/social_links/images/btn_share_mail_jp.png" alt="" />
+		</a>
+	</div>
+	<div class="tweet window">
+		<a href="https://twitter.com/intent/tweet?text=STOP!%20%E3%83%91%E3%82%B9%E3%83%AF%E3%83%BC%E3%83%89%E4%BD%BF%E3%81%84%E5%9B%9E%E3%81%97!%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%9A%E3%83%BC%E3%83%B32018%0Ahttp%3A%2F%2Fwww.jpcert.or.jp%2Fpr%2F2018%2Fstop-password2018.html%0A%40jpcert" target="_blank">
+			<img src="/common/social_links/images/btn_share_tweet_jp.png" alt="" />
+		</a>
+	</div>
+</div>
+
+				<article class="">
+<!-- content_area -->
+<div class="pr-title">
+<center><img style="max-width:100%;" src="img/pr180002_1.png" alt="pr180002_1" ></center>
+  <h4>STOP! パスワード使い回し!  ～知っておきたい、パスワードの危険な落とし穴とその対策～</h4>
+</div>
+<p>
+インターネット上のサービスを利用する際に入力するアカウントIDとパスワードを「認証情報」と言います。この認証情報が漏えいし、悪用されるといった事件が国内外で後を絶ちません。<br />
+同一の認証情報を複数のインターネットサービスで使い回していると、どれか1つのサービスから認証情報が漏えいした際に、他のサービスにも不正にアクセスされ、被害に遭う恐れがあります。<br />
+そうした事態を避けるためには、どのような点に注意すればよいのでしょうか。ここでは、安全なパスワードの設定や、インターネットサービスで提供されているセキュリティ機能の活用など、被害のリスクを減らすための方法と対策をご紹介します。<br />
+</p>
+
+<center>
+<div class="stop_pass_2018">
+		<a class="button" href="#tips0"><img src="img/pr180002_2_off.png" width="24%" alt="pr180002_2"></a>
+		<a class="button" href="#tips1"><img src="img/pr180002_3_off.png" width="24%" alt="pr180002_3"></a>
+		<a class="button" href="#tips2"><img src="img/pr180002_4_off.png" width="24%" alt="pr180002_4"></a>
+		<a class="button" href="#tips3"><img src="img/pr180002_5_off.png" width="24%" alt="pr180002_4"></a>
+</div>
+</center>
+<p>
+<center><img src="img/pr180002_6.png" alt="pr180002_6" ></center><br />
+<div class="pr-title">
+ <h4><a name="tips0"></a>はじめに：情報漏えいのしくみを知ろう</h4>
+</div>
+攻撃者がパスワードをどこから盗み出し、どのように悪用するのか、まずは情報漏えいのしくみを知っておきましょう。
+</p>
+<table class="tips0">
+<tr>
+<td class="tips0"><img src="img/pr180002_7.png" alt="pr180002_7.png"></td>
+<td class="tips0"><img src="img/pr180002_8.png" alt="pr180002_8.png"></td>
+</tr>
+<tr>
+<td class="tips0"><img src="img/pr180002_9.png" alt="pr180002_9.png"></td>
+<td class="tips0"><img src="img/pr180002_10.png" alt="pr180002_10.png"></td>
+</tr>
+</table>
+<br />
+<center><img src="img/pr180002_11.png" alt="pr180002_11" ></center><br />
+<center><img src="img/pr180002_12.png" alt="pr180002_12" ></center><br />
+<center><img src="img/pr180002_13.png" alt="pr180002_13" ></center><br />
+<div class="pr-title">
+ <h4><a name="tips1"></a>TIPS 1：安全なパスワードを設定しよう</h4>
+</div>
+単語や生年月日など、短くて単純なパスワードは、攻撃者に簡単に推測されてしまいます。次のような例を参考にして、安全なパスワードを設定しましょう。<br />
+<br />
+<div class="tips1">
+<table class="tips1">
+<tr>
+<td  class="img1"><img src="img/pr180002_14.png" alt="pr180002_14" ></td>
+<td  class="tips1">安全なパスワードの条件</td>
+</tr>
+<tr>
+<td  class="tips1" colspan="2">
+□ パスワードの文字列は、長めにする（12文字以上を推奨）<br />
+□ インターネットサービスで利用できる様々な文字種（大小英字、数字、記号）を組み合わせると、より強固になる<br />
+□ 推測されやすい単語、生年月日、数字、キーボードの配列順などの単純な文字の並びやログインIDは避ける<br />
+□ 他のサービスで使用しているパスワードは使用しない<br />
+</td>
+</tr>
+</table>
+</div>
+<br />
+<p>
+これまでは、英大文字・小文字、数字に加えて記号を混ぜ込むことが多々推奨されてきました。しかし、「アルファベットを数字や記号に置き換える」等の方法では、憶えやすさが損なわれたり（※後述のコラムを参照）、「p@ssword」（aをアットマーク「@」に置き換え）のような置き換えの場合、辞書攻撃であらかじめ推測されている恐れがあります。したがって、現在では、これまでの方法より数文字でも多くの文字を使うことが望ましいと考えられています。<br />
+<br />
+例えば、8文字で英大小文字＋数字＋記号（94種0.6京通り）をすべて使っても、解読コストの視点から考えると安価なため、容易に解読が可能となりますが、記号を使わない12文字以上であれば英小文字＋数字だけ（36種473京通り）でも解読コストは高くなり<a href=#1>[1]</a>、一定の強度を保てると推測できます。<br />
+<br />
+特定のアルファベットを記号に置き換えたり、意味のない文字列を覚えるよりも、元々意味のある単語の方が記憶しやすいと考えた場合、<br />
+［ 英単語 ］＋［ 好きな日本語のローマ字 ］＋［ 英単語 ］＋［ 英単語 ］…<br />
+のように、単語は辞書からランダムに選んだり、日本語の好きな言葉をローマ字にすることで、記憶しやすく、また文字数の長いパスワードが生成できます。<br />
+利用するサービスによって文字数に上限や英大文字・小文字、数字、記号を必ず加えるなどの制限がある場合は、その制限内で複雑かつ他のサービスで使用していないパスワードを設定しましょう。<br />
+</p>
+<div class="column">
+<p>コラム：安全なパスワードって？～米FTCの記事とNISTの文書から考える～</p>
+<div class="column2">
+「どんなパスワードなら大丈夫なのか」という疑問に対して、「攻撃者はどのような手口でパスワードを破るのか」という観点で考えてみたいと思います。<br />
+<br />
+パスワードに関連する攻撃として、単語や人名などをあらかじめ辞書形式にしてログイン試行を行う、辞書攻撃という手法があります。これに使われる辞書データには、一般的な英単語や、推測されやすいパスワード（例:123456、password）が登録されているため、この攻撃への対策として、いくつかの英字を数字や記号に置き換える対策方法が紹介されることがあります（例：p@ssword）。 <br />
+<br />
+ところが、攻撃者はこうした対策を見越して、ひとつの単語につき、バリエーションの違う候補（p@ssword,passw@rd,pa$$word）を辞書に登録する恐れがあるため、簡単な置き換えだけでは不十分と言えます。<br />
+このような簡単な置き換えのほか、パスワードの設定・運用の甘さによって、攻撃者に推測されやすくなることを示した実験について、米連邦取引委員会（FTC：FEDERAL TRADE COMMISSION）のLorrie Cranor氏が2016年のブログで紹介しています<a href=#2>[2]</a>。<br />
+<br />
+ノースカロライナ大学で実施されたこの実験は、1万以上のアカウントパスワードをもとに行われ、3ヶ月ごとに求められる定期変更によって設定されるパスワードの履歴から、次に設定されるパスワードを推測できるかというものでした。その結果、パスワードの定期変更によりパスワードの変更パターンが定型化してしまい、攻撃者に推測されやすいパスワードとなってしまうことが明らかになりました。加えて、何らかの方法で一度漏えいしたパスワードを攻撃者が知った場合、被験者の17％が変更後のパスワードを推測されてしまったと述べられています。<br />
+このように、「パスワードは定期変更で変えているので、使い回しはしていない」と思っていても、わずか数文字程度を入れ変えた数パターンのパスワードは、いずれ攻撃者に推測されてしまう恐れがあると思われます。<br />
+<br />
+ところで、こうした数字や記号の入れ替えによるパターン化は、サービス提供側で文字数の上限（8文字や12文字、16文字など）が設定されていることも要因となっていると考えられます。<br />
+<br />
+米国立標準技術研究所（NIST）は2017年12月に公開した「デジタル認証のガイドライン（DRAFT Special Publication800-63B Digital Identity Guidelines）」<a href=#3>[3]</a>のドラフトにおいて、サービス提供側へのパスワード提供に関する要件として、ユーザが選択した場合、「少なくとも64文字の長さを選択できるよう許可すべき」と言及しました。<br />
+ユーザの希望に応じて、サービス提供側の文字数上限が広がることで、数字や記号にとらわれず、もっと多くの単語を組み入れることが可能になり、例えば、自分が好きな単語を3、4個組み合わせた、より記憶しやすく長いパスワードを作成することができます。<br />
+<br />
+独立行政法人情報処理推進機構（IPA）が2013年に公開した「情報漏えいを防ぐためのモバイルデバイス等設定マニュアル」<a href=#1>[1]</a>において「パスワード解読の想定コスト例（表3）」が示されています。これによると、たとえ英小文字、数字のみのパスワードであったとしても、12文字以上の場合、英大文字・小文字、数字、記号を組み合わせた8文字のパスワードよりも計算コストは数百倍かかると推測されています。<br />
+前述のNISTの文書においても付録Aにて「パスワードの長さはパスワードの強度を特徴づける主要な要因である」と触れられています。
+<br />
+引き続き、パスワードの設定において、文字、数字を組み合わせる方法も有効ですが、限定された文字数内での記号、数字の強制使用が、「数個のパリエーションの使いまわし」という”隠れパスワード使いまわし”を生み出す恐れがあるため、「覚えやすく、使い回しにならない長いパスワード」をユーザが作りやすくなるよう、サービス提供側がNIST文書等を参考にシステムを運用いただく必要があるといえます。<br />
+<br />
+</div>
+</div>
+<br />
+<center><img src="img/pr180002_15.png" alt="pr180002_15" ></center><br />
+<center><img src="img/pr180002_16.png" alt="pr180002_16" ></center><br />
+<div class="pr-title">
+ <h4><a name="tips2"></a>TIPS 2：パスワードを適切に管理しよう</h4>
+</div>
+サービスごとに複雑なパスワードをいくつも作成していると、設定した内容を忘れてしまう可能性があります。次のような方法を参考に、適切に管理しましょう。<br />
+<br />
+
+<table style="border: none;">
+
+<tr>
+    <td style="border: none; width: 20px; padding: 1px;"></td>
+    <td style="border: none; padding: 1px;"></td>
+</tr>
+
+<tr>
+    <td rowspan="2" style="border: none;text-align: left; padding: 1px; vertical-align: top; ">
+        <a name=a></a>□
+    </td>
+    <td style="border: none; text-align: left; padding: 1px;">
+         紙にメモして、人目に触れない場所で保管する<br />
+    </td>
+</tr>
+<tr>
+    <td style="border: none; text-align: left; padding: 1px;">
+        いちばん簡単な方法が、アカウントIDとパスワードを紙にメモして保管する方法です。ただし、一枚の紙にまとめてメモしてしまうと、万が一盗まれたりすると大変です。アカウントIDとパスワードを別の紙に分けてメモし、別々に保管するようにしましょう。<br /> 
+        <br />
+    </td>
+</tr>
+
+<tr>
+    <td rowspan="2" style="border: none;text-align: left; padding: 1px; vertical-align: top; ">
+        <a name=b></a>□
+    </td>
+    <td style="border: none; text-align: left; padding: 1px;">
+        パスワード付きの電子ファイルで保管する<br />
+    </td>
+</tr>
+<tr>
+    <td style="border: none; text-align: left; padding: 1px;">
+        パソコンの中で保管したいという場合は、パスワード付きの電子ファイルで保管しましょう。この場合も紙での保管と同様に、アカウントIDとパスワードを別々のファイルに分けて保管するのが安全です。<br /> 
+        <br />
+    </td>
+</tr>
+
+<tr>
+    <td rowspan="2" style="border: none;text-align: left; padding: 1px; vertical-align: top; ">
+        <a name=c></a>□
+    </td>
+    <td style="border: none; text-align: left; padding: 1px;">
+        パスワード管理ツールを使用する<br />
+    </td>
+</tr>
+<tr>
+    <td style="border: none; text-align: left; padding: 1px;">
+        「パスワードが覚えられない、そのたびにメモを参照するのは面倒」という方は、信頼性のあるパスワード管理ツールを使用しましょう。多くのパスワード管理ツールでは、各インターネットサービスごとにアカウントIDとパスワードを一度登録しておけば、利用する際にツールから呼び出して自動入力することができます。したがって、利用者はツールを起動するためのパスワードを覚えてさえいればよく、サービスごとに異なる複雑なパスワードをすべて覚えておく必要はありません。 <br />
+※クラウドサービスの管理ツールを利用した場合、漏えいリスクは否定できません。クラウドサービスの性質や機能をよく理解してから利用しましょう。
+        <br />
+    </td>
+</tr>
+</table>
+<br />
+
+<br />
+<center><img src="img/pr180002_17.png" alt="pr180002_17" ></center><br />
+<center><img src="img/pr180002_18.png" alt="pr180002_18" ></center><br />
+<div class="pr-title">
+ <h4><a name="tips3"></a>TIPS 3：インターネットサービスのセキュリティ機能を活用しよう</h4>
+</div>
+インターネットサービスによっては、安全に利用するために役立つさまざまなセキュリティ機能が提供されています。どのような機能があるのかを事前に確認し、積極的に活用しましょう。<br />
+<br />
+<table class="tips3">
+<tr>
+<td class="tips3">
+□ ワンタイムパスワードなどの2段階認証機能を活用する<br />
+より強固なセキュリティ対策として、携帯電話やトークンなどを使用したワンタイムパスワードがあります。ワンタイムパスワードによる2段階認証は、アカウントIDとパスワードによる認証に加えて、ログイン時に一定時間だけ有効なパスワードを使用してログインを行う仕組みです。ワンタイムパスワードは毎回変化するため、再利用できず不正なアクセスを防げます。<br />
+</td>
+<td class="tips3">
+<img src="img/pr180002_19.png" alt="pr180002_19" ><br />
+</td>
+</tr>
+<tr>
+<td class="tips3">
+□ ログイン履歴機能、ログインアラート機能を活用する<br />
+ログイン履歴機能のあるサービスの場合、過去にログインされた日時やアクセス元（IPアドレス、国、地域）などを確認することで、心当たりのない不正なアクセスを早期に発見できます。また、通常と異なる時間帯やアクセス元からログインされた場合に、メール等で通知を受けとれるように設定できるサービスもあり、頻繁に利用しないサービスについても異常にいち早く気づくことができます。<br />
+<font color="blue">［ 不正なログインに気づいたら ］</font><br />
+1. すぐにパスワードを変更しましょう<br />
+2. インターネットサービスのヘルプデスクに相談しましょう<br />
+3. 同じ認証情報を他のサービスで使い回していないかを確認しましょう<br />
+4. 他のサービスでも不正なログインがないかを確認しましょう<br />
+</td>
+<td class="tips3">
+<img src="img/pr180002_20.png" alt="pr180002_20" ><br />
+</td>
+</tr>
+<tr>
+<td class="tips3">
+□「ID・パスワードを忘れた場合」からパスワードを再設定する<br />
+万が一パスワードを忘れてしまったら、多くのインターネットサービスの場合、ログイン画面には「パスワードを忘れた場合」、「パスワードをお忘れの方」といった案内リンクが用意されており、パスワードの再設定方法を教えてくれます。このような方法を利用することで、簡単にパスワードを再設定し、ログインすることができます。<br />
+</td>
+<td class="tips3">
+<img src="img/pr180002_21.png" alt="pr180002_21" ><br />
+</td>
+</tr>
+</table>
+<br />
+
+
+<center><img src="img/pr180002_22.png" alt="pr180002_22" ></center><br />
+<br />
+
+参考情報<br />
+
+<table style="border: none;">
+
+<tr>
+    <td style="border: none; width: 20px; padding: 1px;"></td>
+    <td style="border: none; padding: 1px;"></td>
+</tr>
+
+<tr>
+    <td rowspan="2" style="border: none;text-align: left; padding: 1px; vertical-align: top; ">
+        <a name=1></a>[1] 
+    </td>
+    <td style="border: none; text-align: left; padding: 1px;">
+         IPA 独立行政法人情報処理推進機構
+    </td>
+</tr>
+<tr>
+    <td style="border: none; text-align: left; padding: 1px;">
+        「情報漏えいを防ぐためのモバイルデバイス等設定マニュアル」<br />
+        <a href="https://www.ipa.go.jp/security/ipg/documents/dev_setting_crypt.html" target="_blank">https://www.ipa.go.jp/security/ipg/documents/dev_setting_crypt.html</a><br />
+        <br />
+    </td>
+</tr>
+
+<tr>
+    <td rowspan="2" style="border: none;text-align: left; padding: 1px; vertical-align: top; ">
+        <a name=2></a>[2]
+    </td>
+    <td style="border: none; text-align: left; padding: 1px;">
+        FEDERAL TRADE COMMISION(FTC）
+    </td>
+</tr>
+<tr>
+    <td style="border: none; text-align: left; padding: 1px;">
+        Time to rethink mandatory password changes<br />
+        <a href="https://www.ftc.gov/news-events/blogs/techftc/2016/03/time-rethink-mandatory-password-changes" target="_blank">https://www.ftc.gov/news-events/blogs/techftc/2016/03/time-rethink-mandatory-password-changes</a><br />
+        <br />
+    </td>
+</tr>
+
+<tr>
+    <td rowspan="2" style="border: none;text-align: left; padding: 1px; vertical-align: top; ">
+        <a name=3></a>[3]
+    </td>
+    <td style="border: none; text-align: left; padding: 1px;">
+        National Institute of Standards and Technology（NIST）
+    </td>
+</tr>
+<tr>
+    <td style="border: none; text-align: left; padding: 1px;">
+        NIST Special Publication 800-63B<br />
+        <a href="https://openid-foundation-japan.github.io/800-63-3-final/sp800-63b.ja.html" target="_blank">https://openid-foundation-japan.github.io/800-63-3-final/sp800-63b.ja.html</a><br />
+        <br />
+    </td>
+</tr>
+</table>
+<br />
+
+
+<br />
+<center><img src="img/pr180002_23.png" alt="pr180002_23" ></center><br />
+<div class="pr-title">
+ <h4>STOP! パスワード使い回し! キャンペーン 2018 ご賛同企業</h4>
+</div>
+複数のインターネットサービスで同じアカウントID、パスワードを使い回すことにより、インターネットサービスへの不正なログイン、いわゆる「パスワードリスト攻撃」による被害が継続的に発生しています。パスワードリスト攻撃による被害の軽減には、サービス提供企業・組織における対策の実施もさることながら、サービス利用者による適切なアカウント管理が重要です。<br />
+サービス利用者へのパスワード使い回しを控えるように広く呼びかけるため、「STOP! パスワード使い回し!」キャンペーンを実施しています。 <br />
+<br />
+本キャンペーンにご賛同いただける企業・組織様を募集しています。<br />
+本キャンペーンご賛同企業・組織様には、自社サイトでのキャンペーンバナー、「STOP! パスワード使い回し!」啓発コンテンツの掲載のご協力をお願いいたします。<br />
+<br />
+■ キャンペーン期間<br />
+2018年8月1日（水）～ 2018年8月31日（金）<br />
+<br />
+■ 募集要項<br />
+(1) IDとパスワードを用いて、利用者認証をおこなうサービス提供をしている企業・組織<br />
+(2) 積極的にセキュリティ対策を推進している企業・組織<br />
+(3) 自社サイトにキャンペーンバナーを掲載いただける企業・組織<br />
+(4) 自社サイトに啓発コンテンツを掲載いただける企業・組織<br />
+(5) 反社会的勢力との関係が無い企業・組織 <br />
+<br />
+■ お問合せ先<br />
+stop-pass@jpcert.or.jp<br />
+<br />
+■ 関係資料<br />
+STOP!!パスワード使い回し!!～そのパスワードを知っているのは、本当にあなただけですか？～<br />
+<a href="https://www.jpcert.or.jp/pr/2017/pr170002.html" target="_blank">https://www.jpcert.or.jp/pr/2017/pr170002.html</a><br />
+<br />
+STOP!! パスワード使い回し!!パスワードリスト攻撃による不正ログイン防止に向けた呼びかけ<br />
+<a href="https://www.jpcert.or.jp/pr/2014/pr140004.html" target="_blank">https://www.jpcert.or.jp/pr/2014/pr140004.html</a>
+<br /><br />
+STOP!パスワード使い回し！-パスワードリスト攻撃をご存じですか？<br />
+<a href="http://news.mynavi.jp/articles/2015/08/11/stop_pass/" target="_blank">http://news.mynavi.jp/articles/2015/08/11/stop_pass/</a><br />
+<br />
+■ 賛同企業ロゴ一覧（50音順）
+<table class="support">
+<tr>
+<td class="support"><a href="https://ssl2.excite.co.jp/idc/info/?page=stop_reuse_password" target="_blank"><img src="img/excite.png" ></a></td>
+<td class="support"><a href="http://www.intellilink.co.jp/all/topics/20180823/stoppass.html" target="_blank"><img src="img/NTT_DATA_INTELLILINK.png" ></a></td>
+<td class="support"><a href="https://kosys.opap.jp/special/stop-password-reuse-2018.html" target="_blank"><img src="img/opap-jp.png" ></a></td>
+
+</tr>
+<tr>
+<td class="support_text">エキサイト株式会社</td>
+<td class="support_text">NTTデータ先端技術株式会社</td>
+<td class="support_text">OPAP-JP</td>
+
+</tr>
+
+<tr>
+<td class="support"><a href="https://kasperskylabs.jp/activity/" target="_blank"><img src="img/Kaspersky.png" ></a></td>
+<td class="support"><a href="https://cast.works/jpcert2018" target="_blank"><img src="img/castWORKS_logo.png" ></a><br /></td>
+<td class="support"><a href="https://www.capy.me/jp/press_release/stop%E3%83%91%E3%82%B9%E3%83%AF%E3%83%BC%E3%83%89%E4%BD%BF%E3%81%84%E5%9B%9E%E3%81%97%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%9A%E3%83%BC%E3%83%B32018/" target="_blank"><img src="img/capy_logo.png" ></a></td>
+
+</tr>
+<tr>
+<td class="support_text">株式会社カスペルスキー</td>
+<td class="support_text">株式会社キャスト・ワークス</td>
+<td class="support_text">Capy株式会社</td>
+
+</tr>
+
+<tr>
+<td class="support"><a href="https://kudos.kindai.ac.jp/security/password" target="_blank"><img src="img/kindai.png" ></a></td>
+<td class="support"><a href="http://corp.gree.net/jp/ja/" target="_blank"><img src="img/gree-logo.png" ></a></td>
+<td class="support"><a href="https://jp.corp-sansan.com/" target="_blank"><img src="img/sansan.png" ></a></td>
+
+</tr>
+<tr>
+<td class="support_text">学校法人近畿大学</td>
+<td class="support_text">グリー株式会社</td>
+<td class="support_text">Sansan株式会社</td>
+
+</tr>
+
+<tr>
+
+<td class="support"><a href="https://www.gmo.jp/" target="_blank"><img src="img/GMO_IG_logo.png" ></a></td>
+<td class="support"><a href="https://www.jins.com/jp/" target="_blank"><img src="img/jins.png" ></a></td>
+<td class="support"><a href="https://www.startiaholdings.com/" target="_blank"><img src="img/startia.png" ></a></td>
+
+</tr>
+<tr>
+
+<td class="support_text">GMOインターネットグループ</td>
+<td class="support_text">株式会社ジンズ</td>
+<td class="support_text">スターティアグループ</td>
+
+</tr>
+
+<tr>
+<td class="support"><a href="https://www.sevenbank.co.jp/support/info_notice04.html" target="_blank"><img src="img/sevenbank.png" ></a></td>
+<td class="support"><img src="img/sourcenext_logo.png" ></td>
+<td class="support"><a href="http://www.softbrain.co.jp/" target="_blank"><img src="img/sb_logo.png" ></a></td>
+
+
+</tr>
+<tr>
+<td class="support_text">株式会社セブン銀行</td>
+<td class="support_text">ソースネクスト株式会社</td>
+<td class="support_text">ソフトブレーン株式会社</td>
+
+</tr>
+
+<tr>
+<td class="support"><a href="http://dena.com/jp/" target="_blank"><img src="img/DeNA_logo_RGB.png" ></a></td>
+<td class="support"><a href="https://terms.dmm.com/pretending/" target="_blank"><img src="img/dmm_logo.png" ></a></td>
+<td class="support"><a href="https://www.kaiyodai.ac.jp/topics/news/201808021500.html" target="_blank"><img src="img/kaiyodai.png" ></td>
+
+
+</tr>
+<tr>
+<td class="support_text">株式会社ディー・エヌ・エー</td>
+<td class="support_text">合同会社 DMM.com</td>
+<td class="support_text">国立大学法人　東京海洋大学</td>
+
+
+</tr>
+
+<tr>
+<td class="support"><a href="http://go.trendmicro.com/jp/forHome/solution/mobilesecurity/tmpw/pwcheck.html" target="_blank"><img src="img/trendmicro.png" ></a></td>
+<td class="support"><a href="http://www.nifty.com/security/" target="_blank"><img src="img/nifty.png" ></a></td>
+<td class="support"><a href="https://online.nojima.co.jp/" target="_blank"><img src="img/nojimaonline.png" ></a></td>
+
+
+</tr>
+<tr>
+<td class="support_text">トレンドマイクロ株式会社</td>
+<td class="support_text">ニフティ株式会社</td>
+<td class="support_text">株式会社ノジマ ノジマオンライン</td>
+
+
+</tr>
+
+<tr>
+<td class="support_big"><a href="http://support.biglobe.ne.jp/safesecurity/basicsecurity/" target="_blank"><img src="img/BIGLOBE_logo_A-01c.png" width="55%" ></a></td>
+<td class="support"><a href="https://security.yahoo.co.jp/" target="_blank"><img src="img/Yahoo.png" ></a></td>
+<td class="support"><a href="https://corp.rakuten.co.jp/security/" target="_blank"><img src="img/RAKUTEN.png" ></a></td>
+
+
+</tr>
+<tr>
+<td class="support_text">ビッグローブ株式会社</td>
+<td class="support_text">ヤフー株式会社</td>
+<td class="support_text">楽天株式会社</td>
+
+
+</tr>
+
+<tr>
+<td class="support"><a href="http://www.recruit.jp/" target="_blank"><img src="img/Recruit.png" ></a></td>
+<td class="support"><a href="https://www.spread.or.jp/" target="_blank"><img src="img/spread_banner.png" ></a></td>
+<td class="support"><a href="http://www.jcca-office.gr.jp/consumer/idpass.html" target="_blank"><img src="img/jcca.png" ></a></td>
+<td class="support"></td>
+</tr>
+<tr>
+<td class="support_text">株式会社リクルート</td>
+<td class="support_text">一般社団法人セキュリティ対策推進協議会（SPREAD）</td>
+<td class="support_text">日本クレジットカード協会</td>
+<td class="support_text"></td>
+</tr>
+
+<tr>
+<td class="support"><a href="https://www.j-credit.or.jp/customer/attention/unauthorized.html" target="_blank"><img src="img/jcredit.png" ></a></td>
+<td class="support"></td>
+</tr>
+<tr>
+<td class="support_text">一般社団法人日本クレジット協会</td>
+<td class="support_text"></td>
+</tr>
+
+
+
+
+
+
+</table>
+<p class="pg_top"><a href="#link_pgtop">Topへ</a></p>
+
+<!-- /content_area -->
+				</article>
+
+<div class="social_links cf">
+	<div class="mail">
+		<a href="mailto:?subject=STOP!%20%E3%83%91%E3%82%B9%E3%83%AF%E3%83%BC%E3%83%89%E4%BD%BF%E3%81%84%E5%9B%9E%E3%81%97!%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%9A%E3%83%BC%E3%83%B32018&amp;body=http%3A%2F%2Fwww.jpcert.or.jp%2Fpr%2F2018%2Fstop-password2018.html">
+			<img src="/common/social_links/images/btn_share_mail_jp.png" alt="" />
+		</a>
+	</div>
+	<div class="tweet window">
+		<a href="https://twitter.com/intent/tweet?text=STOP!%20%E3%83%91%E3%82%B9%E3%83%AF%E3%83%BC%E3%83%89%E4%BD%BF%E3%81%84%E5%9B%9E%E3%81%97!%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%9A%E3%83%BC%E3%83%B32018%0Ahttp%3A%2F%2Fwww.jpcert.or.jp%2Fpr%2F2018%2Fstop-password2018.html%0A%40jpcert" target="_blank">
+			<img src="/common/social_links/images/btn_share_tweet_jp.png" alt="" />
+		</a>
+	</div>
+</div>
+<div id="fb" class="feedback feedback_noscript">
+<div class="container_a"><div class="container_b">
+<form name="feedback_form" id="feedback_form">
+	<p class="title">このページは役に立ちましたか？</p>
+	<div class="inner">
+		<p>
+			<input type="radio" name="is_useful" id="is_usefull_yes" value="yes" disabled="disabled" /><label for="is_usefull_yes">はい</label>
+			<input type="radio" name="is_useful" id="is_usefull_no" value="no" disabled="disabled" /><label for="is_usefull_no">いいえ</label>
+		</p>
+		<p class="result">&nbsp;</p>
+	</div>
+	<p class="title">その他、ご意見・ご感想などございましたら、ご記入ください。</p>
+	<div class="inner">
+		<p class="message">こちらはご意見・ご感想用のフォームです。各社製品については、各社へお問い合わせください。</p>
+		<div class="container_a"><div class="container_b">
+			<textarea name="free_text" id="free_text" disabled="disabled" cols="30" rows="3"></textarea>
+		</div></div>
+		<p class="send_area">
+			<input class="button" type="image" src="/common/feedback/images/fb_btn_send_jp.jpg" alt="送信" disabled="disabled"/>
+			<span class="en_js_msg">javascriptを有効にすると、ご回答いただけます。</span>
+			<span class="loader" style="display:none;"><img src="/common/feedback/images/fb_loader.gif" alt="処理中..." /></span>
+			<span class="thanks">ありがとうございました。</span>
+			<a href="/form/" class="incident_link">インシデント報告はこちらから</a>
+		</p>
+	</div>
+	<input type="hidden" name="redirect_to" id="redirect_to" value="" />
+	<input type="hidden" name="feedback_host" id="feedback_host" value="//ws.jpcert.or.jp/cgi-bin/" />
+	<input type="hidden" name="uri" id="uri" value="" />
+	<input type="hidden" name="token" id="token" value="" />
+</form>
+</div></div>
+</div>
+
+
+
+			</div>
+		</div>
+	</div>
+	
+	<div class="contents_left_body">
+		<div class="page_guide_menu">
+	
+	
+	
+	
+	
+	
+	
+	<p>JPCERT/CCについて</p>
+	<ul class="page_guide_menu">
+		<li ><a href="/press/">プレスリリース</a></li>
+		<li ><a href="/about/">JPCERT/CCとは</a></li>
+		<li ><a href="/message.html">代表理事挨拶</a></li>
+		<li ><a href="/profile.html">組織概要</a></li>
+		<li ><a href="/about/01.html">事業概要</a></li>
+		<li ><a href="/recruit/">採用情報</a></li>
+		<li ><a href="/solicitation/">公募・入札情報</a></li>
+		<li ><a href="/event/">イベント</a></li>
+		<li ><a href="/kouen/">講演・執筆一覧</a></li>
+		<li ><a href="/magazine/chronology/index.html">セキュリティインシデント年表</a></li>
+		<li ><a href="/twitter.html">Twitter一覧</a></li>
+		<li ><a href="/jpcert-pgp.html">PGP公開鍵</a></li>
+		<li ><a href="/related/">関連組織</a></li>
+		<li ><a href="/reference.html">お問い合わせ</a></li>
+	</ul>
+	
+</div>
+
+		<div class="recommend_list">
+			<p>おすすめ情報</p>
+			<ul class="list">
+	<li><a href="/magazine/acreport-SysmonSearch.html" onclick="piwikTracker.trackGoal(3);">分析センターだより「Sysmonログを可視化して端末の不審な挙動を調査 ~SysmonSearch~(2018-09-06)」</a></li>
+	<li><a href="/magazine/acreport-cobaltstrike.html" onclick="piwikTracker.trackGoal(3);">分析センターだより「Cobalt Strike Beaconを検知するVolatility Plugin(2018-07-31)」</a></li>
+	<li><a href="/magazine/security/nomore-ransom.html#program" onclick="piwikTracker.trackGoal(3);">ランサムウエア対策特設サイト</a></li>
+</ul>
+		</div>
+
+		<ul class="banner_list">
+
+	<!--
+	<li><a class="button" href="/csirt_material/"><img src="/common/banner_images/csirt_off.png" alt="CSIRTマテリアル" /></a></li>
+	-->
+	
+	<!--
+	<li><a class="button" href="/pr/2017/pr170002.html"><img src="/common/banner_images/password_off.png" alt="STOP!!パスワード使い回し!!キャンペーン2017" /></a></li>
+	<li><a class="button" href="/pr/2016/pr160005.html"><img src="/common/banner_images/holiday_off.png" alt="" /></a></li>
+	<li><a class="button" href="/pr/2016/pr160005.html"><img src="/common/banner_images/vacation_off.png" alt="" /></a></li>
+	-->
+
+	
+
+	
+
+	
+
+	
+	<li><a class="button" href="/form/"><img src="/common/banner_images/request_off.png" alt="インシデント対応依頼" /></a></li>
+	
+
+	
+
+	
+</ul>
+	</div>
+</div>
+
+<footer class="gray_background sh_uoh">
+	<div class="page_link_area contents_area_view cf">
+		<div class="page_link_contaienr cf">
+			<div class="page_link_right_area cf">
+				<div class="page_links">
+					<p class="dt"><a href="/menu_aboutjpcert.html">JPCERT/CCについて</a></p>
+					<div class="cf">
+						<dl class="fl">
+							<dt class="hide">&nbsp;</dt>
+							<dd><a href="/press/">プレスリリース</a></dd>
+							<dd><a href="/about/">JPCERT/CCとは</a></dd>
+							<dd class="dd_second_class"><a href="/message.html">代表理事挨拶</a></dd>
+							<dd class="dd_second_class"><a href="/profile.html">組織概要</a></dd>
+							<dd class="dd_second_class"><a href="/about/01.html">事業概要</a></dd>
+							<dd><a href="/recruit/">採用情報</a></dd>
+							<dd><a href="/solicitation/">公募・入札情報</a></dd>
+						</dl>
+						<dl class="fl">
+							<dt class="hide">&nbsp;</dt>
+							<dd><a href="/event/">イベント</a></dd>
+							<dd><a href="/kouen/">講演・執筆一覧</a></dd>
+							<dd><a href="/magazine/chronology/">セキュリティ<br />インシデント年表</a></dd>
+							<dd><a href="/twitter.html">Twitter一覧</a></dd>
+							<dd><a href="/jpcert-pgp.html">PGP公開鍵</a></dd>
+							<dd><a href="/related/">関連組織</a></dd>
+							<dd><a href="/reference.html">お問い合わせ</a></dd>
+						</dl>
+					</div>
+					<dl class="dl_second_line">
+						<dt><a href="/menu_columnblog.html">コラム＆ブログ</a></dt>
+						<dd><a href="/magazine/acreport.html">分析センターだより</a></dd>
+						<dd><a href="/magazine/irreport.html">インシデントレスポンスだより</a></dd>
+						<dd><a href="/newsflash/">CyberNewsFlash</a></dd>
+						<dd><a href="http://blog.jpcert.or.jp/">英語ブログ</a></dd>
+					</dl>
+				</div>
+			</div>
+			<div class="page_link_left_area cf">
+				<div class="page_links">
+					<dl>
+						<dt>インシデントとは</dt>
+						<dd><a href="/aboutincident.html">インシデントとは</a></dd>
+					</dl>
+				</div>
+				<div class="page_links">
+					<dl>
+						<dt><a href="/menu_alertsandadvisories.html">緊急情報を確認する</a></dt>
+						<dd><a href="/at/">注意喚起</a></dd>
+						<dd><a href="/tsubame/">インターネット定点観測</a></dd>
+						<dd><a href="/vh/top.html">脆弱性対策情報</a></dd>
+						<dd><a href="https://jvn.jp/">JVN</a></dd>
+					</dl>
+					<dl class="dl_second_line">
+						<dt><a href="/menu_reporttojpcert.html">JPCERT/CCに依頼する</a></dt>
+						<dd><a href="/ir/">インシデント対応とは</a></dd>
+						<dd><a href="/form/">インシデント対応依頼</a></dd>
+						<dd><a href="/ics/ics-form.html">制御システムインシデント対応依頼</a></dd>
+						<dd><a href="/ir/status.html">インシデント対応状況</a></dd>
+					</dl>
+				</div>
+				<div class="page_links">
+					<dl>
+						<dt><a href="/menu_documents.html">公開資料を見る</a></dt>
+						<dd><a href="/wr/">Weekly Report</a></dd>
+						<dd><a href="/research/">研究・調査レポート</a></dd>
+						<dd><a href="/ir/report.html">インシデント報告対応レポート</a></dd>
+						<dd><a href="/tsubame/report/">インターネット定点観測レポート</a></dd>
+						<dd><a href="/pr/index.html">活動四半期レポート</a></dd>
+						<dd><a href="/csirt_material/">CSIRTマテリアル</a></dd>
+						<dd><a href="/securecoding/">セキュアコーディング</a></dd>
+						<dd><a href="/report/press.html">ソフトウェア等の<br />脆弱性関連情報に関する届出</a></dd>
+						<dd><a href="/ics/">制御システムセキュリティとは</a></dd>
+						<dd><a href="/magazine/">ライブラリ</a></dd>
+					</dl>
+				</div>
+				<div class="page_links">
+					<dl>
+						<dt><a href="/menu_receiveinformation.html">情報を受け取る</a></dt>
+						<dd><a href="/wwinfo/">早期警戒情報</a></dd>
+						<dd><a href="/ics/ics-community.html">制御システム</a></dd>
+						<dd><a href="/vh/register.html">製品開発者登録</a></dd>
+						<dd><a href="/announce.html">メーリングリスト</a></dd>
+						<dd><a href="/rss/">RSS</a></dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="footer_area">
+		<img class="logo" src="/common/image/footer_logo.svg" width="194" height="45" alt="JPCERT/CC" />
+		<p class="company_info">一般社団法人 JPCERT コーディネーションセンター<br />〒101-0054<br />東京都千代田区神田錦町3-17 廣瀬ビル11 階<br />TEL: 03-3518-4600　FAX 03-3518-4602</p>
+		<ul class="links">
+			<li><a href="/guide.html">ご利用にあたって</a></li>
+			<li><a href="/privacy.html">プライバシーポリシー</a></li>
+			<li><a href="/reference.html">お問い合わせ</a></li>
+			<li><a href="/about/about_mobile.html">モバイル向けコンテンツ</a></li>
+		</ul>
+		<address>Copyright &copy; 1996-2018 JPCERT/CC All Rights Reserved.</address>
+	</div>
+</footer>
+<script type="text/javascript" src="/common/js/prototype.js"></script>
+<script type="text/javascript" src="/common/js/effects.js"></script>
+<script type="text/javascript" src="/common/js/builder.js"></script>
+<script type="text/javascript" src="/common/js/cookie.js"></script>
+<script type="text/javascript" src="/common/slide/slide.js"></script>
+<script type="text/javascript" src="/common/js/common.js"></script>
+<script type="text/javascript" src="/common/social_links/script.js"></script>
+<script type="text/javascript" src="/common/feedback/script.js"></script>
+
+
+
+</body>
+</html>

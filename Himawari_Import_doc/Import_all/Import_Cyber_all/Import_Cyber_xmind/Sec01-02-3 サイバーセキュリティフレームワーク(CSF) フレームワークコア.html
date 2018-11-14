@@ -1,0 +1,756 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<title>Sec01-02-3 サイバーセキュリティフレームワーク(CSF)&#13;
+フレームワークコア</title>
+</head>
+<body>
+<h1 align="center" class="root">
+<a href="#7p18mmauoj9mtft59ugisoj8e2" name="0cr9l8n5jmmi5b2526vmsib19d">Sec01-02-3 サイバーセキュリティフレームワーク(CSF)&#13;
+フレームワークコア</a>
+</h1>
+<h2 class="topic">
+<a name="3drt48ef4aabqsclkd2mfi3q7b">ID 特定</a>
+</h2>
+<h3 class="topic">
+<a name="7631kn18qsd1j7fot16sa830ef">&nbsp;資産管理（ID.AM）</a>
+</h3>
+<h3 class="topic">
+<a name="42oas203vshd3asfo14i4jcb9o">&nbsp;&nbsp;組織が事業目的を達成することを可能にするデータ、職員、デバイス、システム、施設を特定し、事業目標と自組織のリスク戦略との相対的重要性に応じて管理している。</a>
+</h3>
+<h3 class="topic">
+<a name="2n0p47fpdpp70kc661l762h07q">&nbsp;&nbsp;ID.AM-1</a>
+</h3>
+<h3 class="topic">
+<a name="0vp3b77d6gtk2rn2e2rann5uet">&nbsp;&nbsp;&nbsp;企業内の物理デバイスとシステムの一覧を作成している。</a>
+</h3>
+<h3 class="topic">
+<a name="0cbv5lg61pmbidmk9vvsf56gbq">&nbsp;&nbsp;ID.AM-2</a>
+</h3>
+<h3 class="topic">
+<a name="6p1c90tfhfj5jorvigu6nv1t0q">&nbsp;&nbsp;&nbsp;企業内のソフトウェアプラットフォームとアプリケーションの一覧を作成している。</a>
+</h3>
+<h3 class="topic">
+<a name="4g2aeb8snembpqgprn3gdc0erg">&nbsp;&nbsp;ID.AM-3</a>
+</h3>
+<h3 class="topic">
+<a name="1abe1e0hgd0mtt36a04gsrmmjo">&nbsp;&nbsp;&nbsp;企業内の通信とデータの流れの図を用意している。</a>
+</h3>
+<h3 class="topic">
+<a name="51g812hboktj7fnanr74l3o5bs">&nbsp;&nbsp;ID.AM-4</a>
+</h3>
+<h3 class="topic">
+<a name="5t1qtpe7ed7clifk8shlnqi5sn">&nbsp;&nbsp;&nbsp;外部情報システムの一覧を作成している。</a>
+</h3>
+<h3 class="topic">
+<a name="2hbp2fr6sdbf8jv939bth8qvia">&nbsp;&nbsp;ID.AM-5</a>
+</h3>
+<h3 class="topic">
+<a name="75g8q4n6uf6sevgj30vsksgqha">&nbsp;&nbsp;&nbsp;リソース（例：ハードウェア、デバイス、データ、ソフトウェア）を、分類、重要度、ビジネス上の価値に基づいて優先順位付けしている。</a>
+</h3>
+<h3 class="topic">
+<a name="4drg3826rau1c0lmhl98ce75bl">&nbsp;&nbsp;ID.AM-6</a>
+</h3>
+<h3 class="topic">
+<a name="3c0g62r8v7jq24h2mhgp5pqoms">&nbsp;&nbsp;&nbsp;すべての従業員と第三者である利害関係者（例：供給業者、顧客、パートナー）に対して、サイバーセキュリティ上の役割と責任を定めている。</a>
+</h3>
+<h3 class="topic">
+<a name="3dp1dq3n9r4ocs8vcnfvomvb24">&nbsp;ビジネス環境（ID.BE）</a>
+</h3>
+<h3 class="topic">
+<a name="4ssrjem3vcm1mp654aqobl0trb">&nbsp;&nbsp;自組織のミッション、目標、利害関係者、活動を理解し、優先順位付けを行っている; この情報はサイバーセキュリティ上の役割、責任、リスク管理上の意思決定を伝達するために使用される。</a>
+</h3>
+<h3 class="topic">
+<a name="3q15lb65es0904lohbkcds5ins">&nbsp;&nbsp;ID.BE-1</a>
+</h3>
+<h3 class="topic">
+<a name="5ht436br937rkgnj3nfit0d369">&nbsp;&nbsp;&nbsp;サプライチェーンにおける企業の役割を特定し、伝達している</a>
+</h3>
+<h3 class="topic">
+<a name="16qrpt1gn6jedkuddoqot46pth">&nbsp;&nbsp;ID.BE-2</a>
+</h3>
+<h3 class="topic">
+<a name="3as82f7943oala2l03156v290k">&nbsp;&nbsp;&nbsp;重要インフラとその産業分野における企業の位置付けを特定し、伝達している。</a>
+</h3>
+<h3 class="topic">
+<a name="7ldchnlk5qdo2o372go3k1jjch">&nbsp;&nbsp;ID.BE-3</a>
+</h3>
+<h3 class="topic">
+<a name="5t13p728fmd74j70uhkc6ondar">&nbsp;&nbsp;&nbsp;企業のミッション、目標、活動に関して優先順位を定め、伝達している。</a>
+</h3>
+<h3 class="topic">
+<a name="1tushoauookepebfa31f5c7e82">&nbsp;&nbsp;ID.BE-4</a>
+</h3>
+<h3 class="topic">
+<a name="2pcg8hmkvqejamlcu9d3ndb5bq">&nbsp;&nbsp;&nbsp;重要サービスを提供する上での依存関係と重要な機能を把握している。</a>
+</h3>
+<h3 class="topic">
+<a name="5b1le9gqjknusenfj48kjprbp9">&nbsp;&nbsp;ID.BE-5</a>
+</h3>
+<h3 class="topic">
+<a name="04nv7v0433vjkfseps6hm6l69e">&nbsp;&nbsp;&nbsp;重要サービスの提供を支援する、レジリエンスに関する要求事項を定めている。</a>
+</h3>
+<h3 class="topic">
+<a name="02j5otjb4oqoc5v0eai621pr2g">&nbsp;ガバナンス（ID.GV）</a>
+</h3>
+<h3 class="topic">
+<a name="3qb1r0b2pq0nfqj5vfb6ematlp">&nbsp;&nbsp;自組織に対する規制、法律、リスクと、自組織の環境、運用上の要求事項を管理しモニタリングするためのポリシー、手順、プロセスを理解しており、サイバーセキュリティリスクの管理者に伝達している。</a>
+</h3>
+<h3 class="topic">
+<a name="6i1aon7rhpmsuc32106v0k0ojk">&nbsp;&nbsp;ID.GV-1</a>
+</h3>
+<h3 class="topic">
+<a name="0ho99j3vb23m5ogu0a7mt8o9jc">&nbsp;&nbsp;&nbsp;自組織の情報セキュリティポリシーを定めている。</a>
+</h3>
+<h3 class="topic">
+<a name="3k3j4lhn7ujfhj7c0vubqbp5fk">&nbsp;&nbsp;ID.GV-2</a>
+</h3>
+<h3 class="topic">
+<a name="6bbpi70m4tdom2qnq70pr32lsl">&nbsp;&nbsp;&nbsp;情報セキュリティ上の役割と責任について、内部と外部パートナーとで調整・連携している。</a>
+</h3>
+<h3 class="topic">
+<a name="30c20fbp2v0024mt4skg6gu37d">&nbsp;&nbsp;ID.GV-3</a>
+</h3>
+<h3 class="topic">
+<a name="1850tqhsmjsu2u8uo0rd7k6788">&nbsp;&nbsp;&nbsp;プライバシーや市民の自由に関する義務を含む、サイバーセキュリティに関する法規制上の要求事項を理解し、管理している。</a>
+</h3>
+<h3 class="topic">
+<a name="6m6umk66jal1l073pegtq4p6a3">&nbsp;&nbsp;ID.GV-4</a>
+</h3>
+<h3 class="topic">
+<a name="6eop8r7v6cjq9djouilqn74o9h">&nbsp;&nbsp;&nbsp;ガバナンスとリスク管理プロセスがサイバーセキュリティリスクに対応している。</a>
+</h3>
+<h3 class="topic">
+<a name="3lkake3h31h71bf0ac9v1q3f76">&nbsp;リスクアセスメント（ID.RA）</a>
+</h3>
+<h3 class="topic">
+<a name="7jduj4q338sat5m1h8vbau3b7h">&nbsp;&nbsp;企業は自組織の業務（ミッション、機能、イメージ、評判を含む）、自組織の資産、個人に対するサイバーセキュリティリスクを把握している。</a>
+</h3>
+<h3 class="topic">
+<a name="7mr765ui4s7bdkopnud77p99k4">&nbsp;&nbsp;ID.RA-1</a>
+</h3>
+<h3 class="topic">
+<a name="32ds37snesjm9qrbboi363on59">&nbsp;&nbsp;&nbsp;資産の脆弱性を特定し、文書化している。</a>
+</h3>
+<h3 class="topic">
+<a name="3elve9ji0i1a5aobqe5f7c5huf">&nbsp;&nbsp;ID.RA-2</a>
+</h3>
+<h3 class="topic">
+<a name="1m9nr75ifjhlism68l8iniakct">&nbsp;&nbsp;&nbsp;情報共有フォーラム／ソースより、脅威と脆弱性に関する情報を入手している。</a>
+</h3>
+<h3 class="topic">
+<a name="3dghub14pdbj25ealnfm5i1ben">&nbsp;&nbsp;ID.RA-3</a>
+</h3>
+<h3 class="topic">
+<a name="6nhudk9ltnvoainb4e53p3dar9">&nbsp;&nbsp;&nbsp;内外からの脅威を特定し、文書化している。</a>
+</h3>
+<h3 class="topic">
+<a name="2sj4vaiqpeeuu28fon83qafui6">&nbsp;&nbsp;ID.RA-4</a>
+</h3>
+<h3 class="topic">
+<a name="647pkriok90vsf09liijn6gpcr">&nbsp;&nbsp;&nbsp;ビジネスに対する潜在的な影響と、その可能性を特定している。</a>
+</h3>
+<h3 class="topic">
+<a name="4cp58smqlsmgnqnou649ug82dr">&nbsp;&nbsp;ID.RA-5</a>
+</h3>
+<h3 class="topic">
+<a name="4p1se91v2rbd2forvcsosvnd0h">&nbsp;&nbsp;&nbsp;リスクを判断する際に、脅威、脆弱性、可能性、影響を考慮している。</a>
+</h3>
+<h3 class="topic">
+<a name="4eueted2348fpcnelmrh08nlbu">&nbsp;&nbsp;ID.RA-6</a>
+</h3>
+<h3 class="topic">
+<a name="48s8bf5ofh9o23n67nuemfqf1u">&nbsp;&nbsp;&nbsp;リスクに対する対応を定め、優先順位付けしている。</a>
+</h3>
+<h3 class="topic">
+<a name="3f2bkvs7qmnq71klebhoio7h5p">&nbsp;リスク管理戦略（ID.RM）</a>
+</h3>
+<h3 class="topic">
+<a name="3jkqaf7s0g1fk8s6b6vo9439n4">&nbsp;&nbsp;自組織の優先順位、制約、リスク許容度、想定を定め、運用リスクの判断に利用している。</a>
+</h3>
+<h3 class="topic">
+<a name="6ev4t0m94hlo834fr2vb5v0eii">&nbsp;&nbsp;ID.RM-1</a>
+</h3>
+<h3 class="topic">
+<a name="549ujcqt8dv6m06dmkv7qs1lei">&nbsp;&nbsp;&nbsp;リスク管理プロセスが自組織の利害関係者によって確立、管理され、承認されている。</a>
+</h3>
+<h3 class="topic">
+<a name="119cl65o18g24vq9lvrreuideu">&nbsp;&nbsp;ID.RM-2</a>
+</h3>
+<h3 class="topic">
+<a name="6citu5udtcjelo1tcvpf4e8dq7">&nbsp;&nbsp;&nbsp;自組織のリスク許容度を決定し、明確にしている。</a>
+</h3>
+<h3 class="topic">
+<a name="3odupnob3k73h654lod7788gdg">&nbsp;&nbsp;ID.RM-3</a>
+</h3>
+<h3 class="topic">
+<a name="50nttc0iedvsqfa0aovsbfrske">&nbsp;&nbsp;&nbsp;企業によるリスク許容度の決定が、重要インフラにおける自組織の役割と、その分野に特化したリスク分析の結果に基づいて行われている。</a>
+</h3>
+<h2 class="topic">
+<a name="6931eupt6lqu5si05tbcpi4rka">PR 防御</a>
+</h2>
+<h3 class="topic">
+<a name="7fhp6146vjpd087jeeervs8qft">&nbsp;アクセス制御（PR.AC）</a>
+</h3>
+<h3 class="topic">
+<a name="0of95k3olrgni9me48f3o2k5hd">&nbsp;&nbsp;資産および関連施設へのアクセスを、承認されたユーザ、プロセス、またはデバイスと、承認された活動およびトランザクションに限定している。</a>
+</h3>
+<h3 class="topic">
+<a name="047c4glj6gt616lnoe5njbltum">&nbsp;&nbsp;PR.AC-1</a>
+</h3>
+<h3 class="topic">
+<a name="429va54cli429dltr5nnr1qg7j">&nbsp;&nbsp;&nbsp;承認されたデバイスとユーザの識別情報と認証情報を管理している。</a>
+</h3>
+<h3 class="topic">
+<a name="67mdl8re54cbke59lmosjot28p">&nbsp;&nbsp;PR.AC-2</a>
+</h3>
+<h3 class="topic">
+<a name="03sumb9qptuvb4k9ohfp8j1fe5">&nbsp;&nbsp;&nbsp;資産に対する物理アクセスを管理し、保護している。</a>
+</h3>
+<h3 class="topic">
+<a name="36f6jq49a0tfrbf8tqev5eehup">&nbsp;&nbsp;PR.AC-3</a>
+</h3>
+<h3 class="topic">
+<a name="1rdgsh50jlcb2j6erqc1obet4a">&nbsp;&nbsp;&nbsp;リモートアクセスを管理している。</a>
+</h3>
+<h3 class="topic">
+<a name="52k80db6r42p1a1uof806elgan">&nbsp;&nbsp;PR.AC-4</a>
+</h3>
+<h3 class="topic">
+<a name="5rnlfcukarh7ti4ioeegd3okhf">&nbsp;&nbsp;&nbsp;最小権限および職務の分離の原則を取り入れて、アクセス権限を管理している。</a>
+</h3>
+<h3 class="topic">
+<a name="5uh8povfmmn2vsag38n9knb7vf">&nbsp;&nbsp;PR.AC-5</a>
+</h3>
+<h3 class="topic">
+<a name="5t1b2b6j12dujudopqvh5afggt">&nbsp;&nbsp;&nbsp;適宜、ネットワークの分離を行って、ネットワークの完全性を保護している。</a>
+</h3>
+<h3 class="topic">
+<a name="3evebvkr4clkquvokreb5onns4">&nbsp;意識向上およびトレーニング（PR.AT）</a>
+</h3>
+<h3 class="topic">
+<a name="3npk6qbg5fge6qedcgjtsh82gj">&nbsp;&nbsp;自組織の職員およびパートナーに対して、関連するポリシー、手順、契約に基づいた、情報セキュリティに関連する義務と責任を果たせるようにするために、サイバーセキュリティ意識向上教育と、十分なトレーニングを実施している。</a>
+</h3>
+<h3 class="topic">
+<a name="5eam7cbjne7rdvq2md2qrt8n54">&nbsp;&nbsp;PR.AT-1</a>
+</h3>
+<h3 class="topic">
+<a name="378j4t6974fjcfsu5c5vljp5ui">&nbsp;&nbsp;&nbsp;すべてのユーザに情報を周知し、トレーニングを実施している。</a>
+</h3>
+<h3 class="topic">
+<a name="28u55185q2ej3ckghogho3fqpp">&nbsp;&nbsp;PR.AT-2</a>
+</h3>
+<h3 class="topic">
+<a name="4gvfnmg1nql4louhijos3c3tln">&nbsp;&nbsp;&nbsp;権限を持つユーザが役割と責任を理解している。</a>
+</h3>
+<h3 class="topic">
+<a name="7fschl8b5ihv5iv38mr0lkrc7c">&nbsp;&nbsp;PR.AT-3</a>
+</h3>
+<h3 class="topic">
+<a name="3jn5g6blpqvac7tskll2llj89b">&nbsp;&nbsp;&nbsp;第三者である利害関係者（例：供給業者、顧客、パートナー）が役割と責任を理解している。</a>
+</h3>
+<h3 class="topic">
+<a name="6t1tj3dl1h4hpcrmqtg2qdv7cc">&nbsp;&nbsp;PR.AT-4</a>
+</h3>
+<h3 class="topic">
+<a name="0bsv2d8sm48q1nheclfohot03f">&nbsp;&nbsp;&nbsp;上級役員が役割と責任を理解している。</a>
+</h3>
+<h3 class="topic">
+<a name="7v4dp73scfj084f99p2v920g60">&nbsp;&nbsp;PR.AT-5</a>
+</h3>
+<h3 class="topic">
+<a name="480gism4quc996j377usfe8p0f">&nbsp;&nbsp;&nbsp;物理セキュリティおよび情報セキュリティの担当者が役割と責任を理解している。</a>
+</h3>
+<h3 class="topic">
+<a name="4ebb8oviqielk6v1uvbrn69edi">&nbsp;データセキュリティ（PR.DS）</a>
+</h3>
+<h3 class="topic">
+<a name="7qfjphgn9gcrmi4vpmke6ufoiu">&nbsp;&nbsp;情報と記録（データ）を情報の機密性、完全性、可用性を保護するために定められた自組織のリスク戦略に従って管理している。</a>
+</h3>
+<h3 class="topic">
+<a name="7qgfr7etu3ld2losujq1ek9tql">&nbsp;&nbsp;PR.DS-1</a>
+</h3>
+<h3 class="topic">
+<a name="56ikb97rcfc5f5utoeijgl57u0">&nbsp;&nbsp;&nbsp;保存されているデータを保護している。</a>
+</h3>
+<h3 class="topic">
+<a name="1hpi67c1sc2k8p1pudl8p5v0hu">&nbsp;&nbsp;PR.DS-2</a>
+</h3>
+<h3 class="topic">
+<a name="0dmv2uuojgb8v8i4rev609ulha">&nbsp;&nbsp;&nbsp;伝送中のデータを保護している。</a>
+</h3>
+<h3 class="topic">
+<a name="4b1bf93dhgsu3tkoktnqovp1c8">&nbsp;&nbsp;PR.DS-3</a>
+</h3>
+<h3 class="topic">
+<a name="7utve91s6gpb1jp992hh549gv4">&nbsp;&nbsp;&nbsp;資産について撤去、譲渡、廃棄プロセスを正式に管理している。</a>
+</h3>
+<h3 class="topic">
+<a name="3ml278dtddsoupcdk6v8gv9f39">&nbsp;&nbsp;PR.DS-4</a>
+</h3>
+<h3 class="topic">
+<a name="65p7hkphtjf2hes5bvtqbfaojn">&nbsp;&nbsp;&nbsp;可用性を確保するのに十分な容量を保持している。</a>
+</h3>
+<h3 class="topic">
+<a name="6evdu8oc0kujh6ps89t6phpi7u">&nbsp;&nbsp;PR.DS-5</a>
+</h3>
+<h3 class="topic">
+<a name="5v7ums15en1sqve664jcb65huu">&nbsp;&nbsp;&nbsp;データ漏えいに対する保護対策を実施している。</a>
+</h3>
+<h3 class="topic">
+<a name="6574erkikk93rhmkuleqoskob9">&nbsp;&nbsp;PR.DS-6</a>
+</h3>
+<h3 class="topic">
+<a name="5jvtck4arkkoc4uju7q011lbc1">&nbsp;&nbsp;&nbsp;ソフトウェア、ファームウェア、および情報の完全性の検証に、完全性チェックメカニズムを使用している。</a>
+</h3>
+<h3 class="topic">
+<a name="1blu5pr0trc3eidp39c6umvqta">&nbsp;&nbsp;PR.DS-7</a>
+</h3>
+<h3 class="topic">
+<a name="0mf30jp36r6ch8d661f2e5qo94">&nbsp;&nbsp;&nbsp;開発・テスト環境を実稼働環境から分離している。</a>
+</h3>
+<h3 class="topic">
+<a name="2fp0c4qa7fljo0flk816u70pld">&nbsp;情報を保護するためのプロセスおよび手順（PR.IP）</a>
+</h3>
+<h3 class="topic">
+<a name="6d03ma0tim3hf8ll4dentmpad7">&nbsp;&nbsp;（目的、範囲、役割、責任、経営コミットメント、組織間の調整を扱う）セキュリティポリシー、プロセス、手順を維持し、情報システムと資産の保護の管理に使用している。</a>
+</h3>
+<h3 class="topic">
+<a name="42er4ag6vn4928c2s81c8erdo8">&nbsp;&nbsp;PR.IP-1</a>
+</h3>
+<h3 class="topic">
+<a name="7fgasgs1alao9b7eolpq6t9rb5">&nbsp;&nbsp;&nbsp;情報技術／産業用制御システムのベースラインとなる設定を定め、維持している。</a>
+</h3>
+<h3 class="topic">
+<a name="5b3ces5nf73tmb6hiisn3imanq">&nbsp;&nbsp;PR.IP-2</a>
+</h3>
+<h3 class="topic">
+<a name="2bs0hvt5ml2ks8ho229610rn5f">&nbsp;&nbsp;&nbsp;システムを管理するためのシステム開発ライフサイクルを導入している。</a>
+</h3>
+<h3 class="topic">
+<a name="3ailbejbtdi844ro95bf95o9f9">&nbsp;&nbsp;PR.IP-3</a>
+</h3>
+<h3 class="topic">
+<a name="09dc6k5r00f59b4tgp1ecdoi1e">&nbsp;&nbsp;&nbsp;設定変更管理プロセスを導入している。</a>
+</h3>
+<h3 class="topic">
+<a name="0hk875h3n3b9sp12usre6i4s3i">&nbsp;&nbsp;PR.IP-4</a>
+</h3>
+<h3 class="topic">
+<a name="3lurnou45lovqpnfqqd28u71hi">&nbsp;&nbsp;&nbsp;情報のバックアップを定期的に実施、保持し、テストしている。</a>
+</h3>
+<h3 class="topic">
+<a name="37oj003btbhbjm9uqgpd9rllkb">&nbsp;&nbsp;PR.IP-5</a>
+</h3>
+<h3 class="topic">
+<a name="7oa5l6ks0abn2mns19ip8s45ac">&nbsp;&nbsp;&nbsp;自組織の資産の物理的な運用環境に関するポリシーと規制を満たしている。</a>
+</h3>
+<h3 class="topic">
+<a name="10koqhd2s0ct1k5vesfoc7plv9">&nbsp;&nbsp;PR.IP-6</a>
+</h3>
+<h3 class="topic">
+<a name="45qn0gqiuqmrrg18me3tg3lu1o">&nbsp;&nbsp;&nbsp;ポリシーに従ってデータを破壊している。</a>
+</h3>
+<h3 class="topic">
+<a name="2apic45qkfo1h2nc0v7qag66ha">&nbsp;&nbsp;PR.IP-7</a>
+</h3>
+<h3 class="topic">
+<a name="3a5k283h9bv6pfk4vsjgkl51em">&nbsp;&nbsp;&nbsp;保護プロセスを継続的に改善している。</a>
+</h3>
+<h3 class="topic">
+<a name="4p5c4ghkoni68j3gg53tv5c0de">&nbsp;&nbsp;PR.IP-8</a>
+</h3>
+<h3 class="topic">
+<a name="6nno1d561jsq234bc3sq0l80qr">&nbsp;&nbsp;&nbsp;保護技術の有効性について、適切なパートナーとの間で情報を共有している。</a>
+</h3>
+<h3 class="topic">
+<a name="15tofbeptfh17avl65t29sfdvk">&nbsp;&nbsp;PR.IP-9</a>
+</h3>
+<h3 class="topic">
+<a name="5chgvpov5hb4rno5cnkamthcno">&nbsp;&nbsp;&nbsp;対応計画（インシデント対応および事業継続）と復旧計画（インシデントからの復旧および災害復旧）を実施し、管理している。</a>
+</h3>
+<h3 class="topic">
+<a name="3jk2sgo8uisvht51db1i9ijbl6">&nbsp;&nbsp;PR.IP-10</a>
+</h3>
+<h3 class="topic">
+<a name="415po70rjr7h9b1ta5skrg32v6">&nbsp;&nbsp;&nbsp;対応計画と復旧計画をテストしている。</a>
+</h3>
+<h3 class="topic">
+<a name="647mc3ocqjgcpbu5nnv3om84au">&nbsp;&nbsp;PR.IP-11</a>
+</h3>
+<h3 class="topic">
+<a name="2i38soabg5a2hfet6u8iq74nsh">&nbsp;&nbsp;&nbsp;人事に関わる対策にサイバーセキュリティ（例：アクセス権限の無効化、従業員に対する審査）を含めている。</a>
+</h3>
+<h3 class="topic">
+<a name="7fusv1rms7imh8cahbtleccctc">&nbsp;&nbsp;PR.IP-12</a>
+</h3>
+<h3 class="topic">
+<a name="5k2gnlbshrsf0fn8kcu4rf3gmq">&nbsp;&nbsp;&nbsp;脆弱性管理計画を作成し、実施している。</a>
+</h3>
+<h3 class="topic">
+<a name="4psoluaq6fktnqr43emif4s7il">&nbsp;保守（PR.MA）</a>
+</h3>
+<h3 class="topic">
+<a name="53n5aqnmi5jm6had3cpe3nvogn">&nbsp;&nbsp;産業用制御システムと情報システムのコンポーネントの保守と修理をポリシーと手順に従って実施している。</a>
+</h3>
+<h3 class="topic">
+<a name="092kin5l94o4kmqopmppbnl5db">&nbsp;&nbsp;PR.MA-1</a>
+</h3>
+<h3 class="topic">
+<a name="1uteoq2fpr6sfait2vu3sa2rbk">&nbsp;&nbsp;&nbsp;自組織の資産の保守と修理は、承認・管理されたツールを用いて、タイムリーに実施し、ログを記録している。</a>
+</h3>
+<h3 class="topic">
+<a name="3tqggbanodknvdkfbm2qik1fm0">&nbsp;&nbsp;PR.MA-2</a>
+</h3>
+<h3 class="topic">
+<a name="0hjpefvsjdgmc3quol72aomoji">&nbsp;&nbsp;&nbsp;自組織の資産に対する遠隔保守は、承認を得て、ログを記録し、不正アクセスを防げる形で実施している。</a>
+</h3>
+<h3 class="topic">
+<a name="1ppaau6abe3esrha7vuhqlbmge">&nbsp;保護技術（PR.PT）</a>
+</h3>
+<h3 class="topic">
+<a name="3kesru1erab5sfoppol4ar78fq">&nbsp;&nbsp;関連するポリシー、手順、契約に基づいて、システムと資産のセキュリティと耐性・復旧力を確保するための、技術的なセキュリティソリューションを管理している。</a>
+</h3>
+<h3 class="topic">
+<a name="3l0vo1kma5ob1itpaur0n35unj">&nbsp;&nbsp;PR.PT-1</a>
+</h3>
+<h3 class="topic">
+<a name="7qgg57cv70imha8qktnauvakah">&nbsp;&nbsp;&nbsp;ポリシーに従って監査記録／ログ記録の対象を決定、文書化し、そうした記録を実施して、レビューしている。</a>
+</h3>
+<h3 class="topic">
+<a name="5fpo5emvjg4mu7qe4t358clihv">&nbsp;&nbsp;PR.PT-2</a>
+</h3>
+<h3 class="topic">
+<a name="48nv1am3m5ar06ihuo6jpgphib">&nbsp;&nbsp;&nbsp;ポリシーに従って取り外し可能な外部記録媒体を保護し、そうした媒体の使用を制限している。</a>
+</h3>
+<h3 class="topic">
+<a name="6h60unj0865dl9p2c53agstlpn">&nbsp;&nbsp;PR.PT-3</a>
+</h3>
+<h3 class="topic">
+<a name="0bm1d0dtmbo9a3ihebslpsqjat">&nbsp;&nbsp;&nbsp;最小機能の原則を取り入れて、システムと資産に対するアクセスを制御している。</a>
+</h3>
+<h3 class="topic">
+<a name="7bm0m2ev87f60pou1h5926fcj8">&nbsp;&nbsp;PR.PT-4</a>
+</h3>
+<h3 class="topic">
+<a name="6hgv42ek8sa6hkp7ko1an00utq">&nbsp;&nbsp;&nbsp;通信ネットワークと制御ネットワークを保護している。</a>
+</h3>
+<h2 class="topic">
+<a name="6782pqk9oltrg40lg5m5kv5j4s">DE 検知</a>
+</h2>
+<h3 class="topic">
+<a name="543inu5qdai0cs7jnhn8vkf0iu">&nbsp;異常とイベント（DE.AE）</a>
+</h3>
+<h3 class="topic">
+<a name="1patsm1fa0jlqf8i79oqrepd98">&nbsp;&nbsp;異常な活動をタイムリーに検知し、イベントがもたらす可能性のある影響を把握している。</a>
+</h3>
+<h3 class="topic">
+<a name="7qpjnjj6k713vsublvhhtq6ju0">&nbsp;&nbsp;DE.AE-1</a>
+</h3>
+<h3 class="topic">
+<a name="7l8mofbr69kg3ktchadpkqfceu">&nbsp;&nbsp;&nbsp;ネットワーク運用のベースラインと、ユーザとシステム間の予測されるデータの流れを特定し、管理している。</a>
+</h3>
+<h3 class="topic">
+<a name="3e8humlo2k0gegq7u4d3ap6i44">&nbsp;&nbsp;DE.AE-2</a>
+</h3>
+<h3 class="topic">
+<a name="73lak9dbib4aae05ojuo7ns6c1">&nbsp;&nbsp;&nbsp;攻撃の標的と手法を理解するために、検知したイベントを分析している。</a>
+</h3>
+<h3 class="topic">
+<a name="001mimc5lk5cbgfpqff1q939mt">&nbsp;&nbsp;DE.AE-3</a>
+</h3>
+<h3 class="topic">
+<a name="3bvtik65dtdhrsa4o79vvkqlkl">&nbsp;&nbsp;&nbsp;イベントデータを複数の情報源やセンサーから収集し、相互に関連付けている。</a>
+</h3>
+<h3 class="topic">
+<a name="3og393hk0jhorlmu6iai08gsmm">&nbsp;&nbsp;DE.AE-4</a>
+</h3>
+<h3 class="topic">
+<a name="0ibo7e0e23g51oofre4029sqrp">&nbsp;&nbsp;&nbsp;イベントがもたらす影響を特定している。</a>
+</h3>
+<h3 class="topic">
+<a name="5kisof26cpu0q9d30oq0st31aq">&nbsp;&nbsp;DE.AE-5</a>
+</h3>
+<h3 class="topic">
+<a name="1ntbsp53h7bd7jsgc848ulv47c">&nbsp;&nbsp;&nbsp;インシデント警告の閾値を定めている。</a>
+</h3>
+<h3 class="topic">
+<a name="233r6no9nv4nvtvl8s52ud80im">&nbsp;セキュリティの継続的なモニタリング (DE.CM)</a>
+</h3>
+<h3 class="topic">
+<a name="5ib2kdpldr25q8ubi7na4agc0r">&nbsp;&nbsp;サイバーセキュリティイベントを検知し、保護対策の有効性を検証するために、情報システムと資産を離散間隔でモニタリングしている。</a>
+</h3>
+<h3 class="topic">
+<a name="74v5mo7ok6ltvnpi6ae81i1lki">&nbsp;&nbsp;DE.CM-1</a>
+</h3>
+<h3 class="topic">
+<a name="08u9aopd16joii6usq56d2tf53">&nbsp;&nbsp;&nbsp;発生する可能性のあるサイバーセキュリティイベントを検知できるよう、ネットワークをモニタリングしている。</a>
+</h3>
+<h3 class="topic">
+<a name="68oq33rgsgri59f372l2dmv6b4">&nbsp;&nbsp;DE.CM-2</a>
+</h3>
+<h3 class="topic">
+<a name="6dj5e7esnqhv5894imgk9h81ia">&nbsp;&nbsp;&nbsp;発生する可能性のあるサイバーセキュリティイベントを検知できるよう、物理環境をモニタリングしている。</a>
+</h3>
+<h3 class="topic">
+<a name="272uflkup0mfnmj7og6t7s0oda">&nbsp;&nbsp;DE.CM-3</a>
+</h3>
+<h3 class="topic">
+<a name="77a5ndh5qcmm5qc2mojnhlbvvg">&nbsp;&nbsp;&nbsp;発生する可能性のあるサイバーセキュリティイベントを検知できるよう、個人の活動をモニタリングしている。</a>
+</h3>
+<h3 class="topic">
+<a name="6k3kf26ek2h62i01u93ugq1uq7">&nbsp;&nbsp;DE.CM-4</a>
+</h3>
+<h3 class="topic">
+<a name="7phpiq0rd3lk5oth2egdbd6l4d">&nbsp;&nbsp;&nbsp;悪質なコードを検出できる。</a>
+</h3>
+<h3 class="topic">
+<a name="291dhunlbkmipu777jqj3q0476">&nbsp;&nbsp;DE.CM-5</a>
+</h3>
+<h3 class="topic">
+<a name="42e4iq60ra86h6nn71rorvpfv3">&nbsp;&nbsp;&nbsp;悪質なモバイルコードを検出できる。</a>
+</h3>
+<h3 class="topic">
+<a name="5s2gf61ih1rkip4uq51rs1s7e9">&nbsp;&nbsp;DE.CM-6</a>
+</h3>
+<h3 class="topic">
+<a name="75m8c9g1otckk4ckrdrma3db1j">&nbsp;&nbsp;&nbsp;発生する可能性のあるサイバーセキュリティイベントを検知できるよう、外部サービスプロバイダの活動をモニタリングしている。</a>
+</h3>
+<h3 class="topic">
+<a name="2k18o4992lsoi0mnnk8hak2fbv">&nbsp;&nbsp;DE.CM-7</a>
+</h3>
+<h3 class="topic">
+<a name="7tm7s02k76dvjq2ll5ujkt0e6e">&nbsp;&nbsp;&nbsp;権限のない従業員、接続、デバイス、ソフトウェアのモニタリングを実施している。</a>
+</h3>
+<h3 class="topic">
+<a name="7ekeefga5kknk632v05t8clkv4">&nbsp;&nbsp;&nbsp;参考情報</a>
+</h3>
+<h3 class="topic">
+<a name="7ckjtrahbq2gu1rqa43e5llpui">&nbsp;&nbsp;&nbsp;&nbsp;  NIST SP 800-53 Rev. 4 AU-12, CA-7, CM-3,　CM-8, PE-3, PE-6, PE-20, SI-4</a>
+</h3>
+<h3 class="topic">
+<a name="02h2s3behuftiovqvoh694k5q9">&nbsp;&nbsp;DE.CM-8</a>
+</h3>
+<h3 class="topic">
+<a name="4lole8874u69jokn5a09ri0rur">&nbsp;&nbsp;&nbsp;脆弱性スキャンを実施している。</a>
+</h3>
+<h3 class="topic">
+<a name="2favuodo806lak9kd1qtuhjnaq">&nbsp;検知プロセス（DE.DP）</a>
+</h3>
+<h3 class="topic">
+<a name="3k8ra8fl1m8ekj130vueblnpvn">&nbsp;&nbsp;異常なイベントをタイムリーに、かつ正確に検知するための検知プロセスおよび手順を維持し、テストしている。</a>
+</h3>
+<h3 class="topic">
+<a name="7et8h06j4h90tijsi76v1m2l8s">&nbsp;&nbsp;DE.DP-1</a>
+</h3>
+<h3 class="topic">
+<a name="79uqk22f3ad1m40lbog3bgs70r">&nbsp;&nbsp;&nbsp;説明責任を果たせるよう、検知に関する役割と責任を明確に定義している。</a>
+</h3>
+<h3 class="topic">
+<a name="13ds6a2i5q738e204l9hnki9q4">&nbsp;&nbsp;DE.DP-2</a>
+</h3>
+<h3 class="topic">
+<a name="4tbkegblau3gvjpvetomav0tib">&nbsp;&nbsp;&nbsp;検知活動は必要なすべての要求事項を満たしている。</a>
+</h3>
+<h3 class="topic">
+<a name="5oqa0cvmg7eks71a50s9au67qn">&nbsp;&nbsp;DE.DP-3</a>
+</h3>
+<h3 class="topic">
+<a name="29vndmifqmssiffrovgg8tdf56">&nbsp;&nbsp;&nbsp;検知プロセスをテストしている。</a>
+</h3>
+<h3 class="topic">
+<a name="266am13qj0opdan8dhon2chq5k">&nbsp;&nbsp;DE.DP-4</a>
+</h3>
+<h3 class="topic">
+<a name="075h889p41d35qh0v6ini47eqh">&nbsp;&nbsp;&nbsp;イベント検知情報を適切な関係者に伝達している。</a>
+</h3>
+<h3 class="topic">
+<a name="7c36dfdshhhjlodnu1htuaufb1">&nbsp;&nbsp;DE.DP-5</a>
+</h3>
+<h3 class="topic">
+<a name="6u0m5q7c71peivobsc2bb3bus1">&nbsp;&nbsp;&nbsp;検知プロセスを継続的に改善している。</a>
+</h3>
+<h2 class="topic">
+<a name="3rtudesp292kglvpuc4qv6m9qe">RS 対応</a>
+</h2>
+<h3 class="topic">
+<a name="32uii0e49qctn9bj1t8ujaa2eg">&nbsp;対応計画（RS.RP）</a>
+</h3>
+<h3 class="topic">
+<a name="3vek2t6f3ep4h15bhn6ur161c3">&nbsp;&nbsp;検知したサイバーセキュリティイベントにタイムリーに対応できるよう、対応プロセスおよび手順を実施し、維持している。</a>
+</h3>
+<h3 class="topic">
+<a name="0ctl13kev8ietgr0gg79eoemor">&nbsp;&nbsp;RS.RP-1</a>
+</h3>
+<h3 class="topic">
+<a name="7b0iojcgbb451gcfgr47god43e">&nbsp;&nbsp;&nbsp;イベントの発生中または発生後に対応計画を実施している。</a>
+</h3>
+<h3 class="topic">
+<a name="4sghvh2c4btnib6pjjq1ha25k5">&nbsp;伝達（RS.CO）</a>
+</h3>
+<h3 class="topic">
+<a name="0bh6peattp0nllu247f6jk1kgv">&nbsp;&nbsp;法執行機関からの支援を必要に応じて得られるよう、内外の利害関係者との間で対応活動を調整している。</a>
+</h3>
+<h3 class="topic">
+<a name="05j5r0mf1loslbrhkbbkt3bkk2">&nbsp;&nbsp;RS.CO-1</a>
+</h3>
+<h3 class="topic">
+<a name="5c33lk8c92nuns93aimbg8p427">&nbsp;&nbsp;&nbsp;対応が必要になった時の自身の役割と行動の順番を従業員は認識している。</a>
+</h3>
+<h3 class="topic">
+<a name="3a96tlm4vc172ua6vem1i1cp67">&nbsp;&nbsp;RS.CO-2</a>
+</h3>
+<h3 class="topic">
+<a name="1l0hd6rokg1915mgu3cf9qqvgg">&nbsp;&nbsp;&nbsp;定められた基準に沿って、イベントを報告している。</a>
+</h3>
+<h3 class="topic">
+<a name="3to875vd1ehfeb1up7uc84khh3">&nbsp;&nbsp;RS.CO-3</a>
+</h3>
+<h3 class="topic">
+<a name="4dbjm4u1efcmt8h8jr6klfijt4">&nbsp;&nbsp;&nbsp;対応計画に従って情報を共有している。</a>
+</h3>
+<h3 class="topic">
+<a name="50r2i9lhrohhhfi9tc38rb0a0s">&nbsp;&nbsp;RS.CO-4</a>
+</h3>
+<h3 class="topic">
+<a name="3om7rbukjsb7hkf94go6fvj3gi">&nbsp;&nbsp;&nbsp;対応計画に従って、利害関係者との間で調整を行っている。</a>
+</h3>
+<h3 class="topic">
+<a name="20eoeahb3asn72gngi5mkderk5">&nbsp;&nbsp;RS.CO-5</a>
+</h3>
+<h3 class="topic">
+<a name="0mhg2hpvf2nh4ua8g8vjq3nvrp">&nbsp;&nbsp;&nbsp;サイバーセキュリティに関する状況認識を深めるために、外部利害関係者との間で任意の情報共有を行っている。</a>
+</h3>
+<h3 class="topic">
+<a name="4c52md2111iipsi9llkk42it4t">&nbsp;分析 (RS.AN)</a>
+</h3>
+<h3 class="topic">
+<a name="1efhjbmjgf0era081kfl8g9ep0">&nbsp;&nbsp;適切な対応を確実にし、復旧活動を支援するために、分析を実施している。</a>
+</h3>
+<h3 class="topic">
+<a name="4j8t54ls5mgmi67je0vbtfaa47">&nbsp;&nbsp;RS.AN-1</a>
+</h3>
+<h3 class="topic">
+<a name="0jb0242bd5833c8k98pgvg5kif">&nbsp;&nbsp;&nbsp;検知システムからの通知を調査している。</a>
+</h3>
+<h3 class="topic">
+<a name="55635cdhb0vl92q96h565iqg01">&nbsp;&nbsp;RS.AN-2</a>
+</h3>
+<h3 class="topic">
+<a name="1dpnhn7iorpnsnh0h1htjtm5q8">&nbsp;&nbsp;&nbsp;インシデントがもたらす影響を把握している。</a>
+</h3>
+<h3 class="topic">
+<a name="2b2c6cvlev8tvsakva0jnimi3d">&nbsp;&nbsp;RS.AN-3</a>
+</h3>
+<h3 class="topic">
+<a name="3oiir3gosuefrludgmmaq4voim">&nbsp;&nbsp;&nbsp;フォレンジクスを実施している。</a>
+</h3>
+<h3 class="topic">
+<a name="399gqnle71ecijo9a0jn72nsob">&nbsp;&nbsp;RS.AN-4</a>
+</h3>
+<h3 class="topic">
+<a name="7nm2ud1l338p10vks5njij3ole">&nbsp;&nbsp;&nbsp;対応計画に従ってインシデントを分類している。</a>
+</h3>
+<h3 class="topic">
+<a name="5as4vcb7l6pagsk3r3ju9dea25">&nbsp;低減（RS.MI）</a>
+</h3>
+<h3 class="topic">
+<a name="37lljnl8fq236c0d3ad47afa6c">&nbsp;&nbsp;イベントの拡大を防ぎ、その影響を緩和し、インシデントを根絶するための活動を実施している。</a>
+</h3>
+<h3 class="topic">
+<a name="20tntn7bk6skivt18gc5aettph">&nbsp;&nbsp;RS.MI-1</a>
+</h3>
+<h3 class="topic">
+<a name="5nc2oe5179qcago8lj55vc45rs">&nbsp;&nbsp;&nbsp;インシデントを封じ込めている。</a>
+</h3>
+<h3 class="topic">
+<a name="0fe507qat39d9bnguek12mrk4o">&nbsp;&nbsp;RS.MI-2</a>
+</h3>
+<h3 class="topic">
+<a name="7hifpe75ph5s0teikuvknrgpbl">&nbsp;&nbsp;&nbsp;インシデントを低減している。</a>
+</h3>
+<h3 class="topic">
+<a name="0usf2sbdmj61f2aoa3edphaeeb">&nbsp;&nbsp;RS.MI-3</a>
+</h3>
+<h3 class="topic">
+<a name="1ll8u7uqo1f932p2jsa7pmn5ci">&nbsp;&nbsp;&nbsp;新たに特定された脆弱性に関して、許容できるリスクである場合にはその旨を文書化し、そうでない場合には低減している。</a>
+</h3>
+<h3 class="topic">
+<a name="73l9iorprtvpmku5elk0iscfps">&nbsp;改善（RS.IM）</a>
+</h3>
+<h3 class="topic">
+<a name="6sqob4ubq8v6rjvg3ekf61cobm">&nbsp;&nbsp;現在と過去の意思決定／対応活動から学んだ教訓を取り入れることで、自組織の対応活動を改善している。</a>
+</h3>
+<h3 class="topic">
+<a name="558ldhia4nr509rrj1t38mdb0k">&nbsp;&nbsp;RS.IM-1</a>
+</h3>
+<h3 class="topic">
+<a name="6ok3aefuko9bjvlagkm6upk1ia">&nbsp;&nbsp;&nbsp;学んだ教訓を対応計画に取り入れている。</a>
+</h3>
+<h3 class="topic">
+<a name="7fgrtvcds7osdegs67i78ho0vj">&nbsp;&nbsp;RS.IM-2</a>
+</h3>
+<h3 class="topic">
+<a name="0i7pip1lugge2vi219s718niij">&nbsp;&nbsp;&nbsp;対応戦略を更新している。</a>
+</h3>
+<h2 class="topic">
+<a name="55og7a8612uq3tk2tvdc8vrtge">RC 復旧</a>
+</h2>
+<h3 class="topic">
+<a name="5p2id4kq6eqvf2t84m8t334cjk">&nbsp;復旧計画（RC.RP）</a>
+</h3>
+<h3 class="topic">
+<a name="5hnr1rsn5djfhutvvbunq1qosm">&nbsp;&nbsp;サイバーセキュリティイベントによる影響を受けたシステムや資産をタイムリーに復旧できるよう、復旧プロセスおよび手順を実施し、維持している。</a>
+</h3>
+<h3 class="topic">
+<a name="4un5m5k7jpp91dl49igeslt5c8">&nbsp;&nbsp;RC.RP-1</a>
+</h3>
+<h3 class="topic">
+<a name="338q0qkanj4v3qsmapvnu8nqrb">&nbsp;&nbsp;&nbsp;イベントの発生中または発生後に復旧計画を実施している。</a>
+</h3>
+<h3 class="topic">
+<a name="4voh5vr0qju3rfaf6g1ilckuvl">&nbsp;改善（RC.IM）</a>
+</h3>
+<h3 class="topic">
+<a name="39uv928ibel5rpe3gvc7depg4c">&nbsp;&nbsp;学んだ教訓を将来的な活動に取り入れることで、復旧計画およびプロセスを改善している。</a>
+</h3>
+<h3 class="topic">
+<a name="7c6sb0r5sk77u2agdr5ug2paju">&nbsp;&nbsp;RC.IM-1</a>
+</h3>
+<h3 class="topic">
+<a name="7fjspf8v4i0316p4a598dlkd6h">&nbsp;&nbsp;&nbsp;学んだ教訓を復旧計画に取り入れている。</a>
+</h3>
+<h3 class="topic">
+<a name="4m60s0ieksd8ccqgfi196rbe2c">&nbsp;&nbsp;RC.IM-2</a>
+</h3>
+<h3 class="topic">
+<a name="39s5eb5n6fdk14nqab6vp5njem">&nbsp;&nbsp;&nbsp;復旧戦略を更新している。</a>
+</h3>
+<h3 class="topic">
+<a name="0g4343vs3slf1oqiviucbr5bm3">&nbsp;伝達（RC.CO）</a>
+</h3>
+<h3 class="topic">
+<a name="43tt5d9q7crlg0a5usjdjfjekc">&nbsp;&nbsp;コーディネーティングセンター、インターネットサービスプロバイダ、攻撃システムのオーナー、被害者、その他のCSIRT、ベンダなどの、内外の関係者との間で復旧活動を調整している。</a>
+</h3>
+<h3 class="topic">
+<a name="62qj5ri4bujlmljh7ig7l59bgb">&nbsp;&nbsp;RC.CO-1</a>
+</h3>
+<h3 class="topic">
+<a name="3amao483eaijronot1q6kqcsq1">&nbsp;&nbsp;&nbsp;広報活動を管理している。</a>
+</h3>
+<h3 class="topic">
+<a name="2a62mhrg7sg336k2pror4fbg23">&nbsp;&nbsp;RC.CO-2</a>
+</h3>
+<h3 class="topic">
+<a name="47jp5kq5phgnj7abv5sgro6n6a">&nbsp;&nbsp;&nbsp;イベント発生後に評判を回復している。</a>
+</h3>
+<h3 class="topic">
+<a name="5jbvrjqfaq75mp9120k0c81e26">&nbsp;&nbsp;RC.CO-3</a>
+</h3>
+<h3 class="topic">
+<a name="03ids2dgqnunv5e6eh5r3sl83g">&nbsp;&nbsp;&nbsp;復旧活動について内部利害関係者と役員、そして経営陣に伝達している。</a>
+</h3>
+</body>
+</html>

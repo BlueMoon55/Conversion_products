@@ -1,0 +1,951 @@
+IoT セキュリティのた
+めのブロックチェーン
+技術の活用
+Presented by the Blockchain/
+Distributed Ledger
+Working Group
+
+ © 2018 Cloud Security Alliance – All Rights Reserved.
+You may download, store, display on your computer, view, print, and link to Using Blockchain Technology to
+Secure the Internet of Things subject to the following: (a) the Document may be used solely for your personal,
+informational, non-commercial use; (b) the Report may not be modified or altered in any way; (c) the Document
+may not be redistributed; and (d) the trademark, copyright or other notices may not be removed. You may quote
+portions of the Document as permitted by the Fair Use provisions of the United States Copyright Act, provided
+that you attribute the portions to the Using Blockchain Technology to Secure the Internet of Things paper.
+
+Blockchain/Distributed Ledger Technology Working Group | Using Blockchain Technology to Secure the Internet of Things
+© Copyright 2018, Cloud Security Alliance. All rights reserved.
+
+2
+
+ ABOUT CSA
+The Cloud Security Alliance is a not-for-profit organization with a mission to promote the use of best
+practices for providing security assurance within Cloud Computing, and to provide education on the uses of
+Cloud Computing to help secure all other forms of computing. The Cloud Security Alliance is led by a broad
+coalition of industry practitioners, corporations, associations and other key stakeholders. For further
+information, visit us at www.cloudsecurityalliance.org and follow us on Twitter @cloudsa.
+
+Blockchain/Distributed Ledger Technology Working Group | Using Blockchain Technology to Secure the Internet of Things
+© Copyright 2018, Cloud Security Alliance. All rights reserved.
+
+3
+
+ 目次
+ABOUT CSA ............................................................................................................................................................................ 3
+ACKNOWLEDGMENTS ..................................................................................................................................................... 5
+はじめに ..................................................................................................................................................................................... 7
+ブロックチェーン技術概要 ................................................................................................................................................ 9
+トランザクションの送信とブロックチェーンの構築....................................................................................... 11
+スマートコントラクト................................................................................................................................................... 12
+オフチェーンストレージソリューション .............................................................................................................. 12
+配備オプション ................................................................................................................................................................ 12
+ブロックチェーン技術に基づく IoT アーキテクチャ ............................................................................................. 14
+コミュニケーションモデル ......................................................................................................................................... 15
+相互運用性を高めるための充実したエコシステム ........................................................................................... 16
+複数のブロックチェーンサービスの同居 .............................................................................................................. 16
+ブロックチェーン技術に基づいた IoT アーキテクチャのパターン ........................................................... 17
+IoT セキュリティに向けたブロックチェーン技術の選択 ............................................................................... 18
+IoT におけるブロックチェーンセキュリティサービスのまとめ ....................................................................... 22
+結論 .............................................................................................................................................................................................. 23
+REFERENCES ........................................................................................................................................................................ 24
+
+Blockchain/Distributed Ledger Technology Working Group | Using Blockchain Technology to Secure the Internet of Things
+© Copyright 2018, Cloud Security Alliance. All rights reserved.
+
+4
+
+ ACKNOWLEDGMENTS
+
+Initiative Lead:
+Sabri Khemissa
+Key Contributors:
+Alex Brown
+Giuliana Carullo
+Elier Cruz
+Kevin Fielder
+Doug Gardner
+Jas Khehra
+Imre Kocsis
+Paul Lanois
+Ashish Mehta
+Matt Murphy
+Todd Nelson
+Denis Nwanshi
+Luc Poulin
+Michael Roza
+Brian Russell
+Srinivas Tatipamula
+Udo Gustavo von Blücher
+CSA Staff:
+Hillary Baron
+Kendall Scoboria
+John Yeoh
+
+Blockchain/Distributed Ledger Technology Working Group | Using Blockchain Technology to Secure the Internet of Things
+© Copyright 2018, Cloud Security Alliance. All rights reserved.
+
+5
+
+ 日本語版提供に際しての告知及び注意事項
+本書「IoT セキュリティのためのブロックチェーン技術の活用」は、Cloud Security Alliance (CSA)が公開して
+いる「Using Blockchain Technology to Secure the Internet of Things」の日本語訳です。本書は、CSA ジャパ
+ンが、CSA の許可を得て翻訳し、公開するものです。原文と日本語版の内容に相違があった場合には、原文が優先
+されます。
+翻訳に際しては、原文の意味および意図するところを、極力正確に日本語で表すことを心がけていますが、翻訳の
+正確性および原文への忠実性について、CSA ジャパンは何らの保証をするものではありません。
+この翻訳版は予告なく変更される場合があります。以下の変更履歴（日付、バージョン、変更内容）をご確認くだ
+さい。
+変更履歴
+日付
+2018 年 10 月 02 日
+
+バージョン
+日本語版 1.0
+
+変更内容
+初版発行
+
+本翻訳の著作権は CSA ジャパンに帰属します。引用に際しては、出典を明記してください。無断転載を禁止します。
+転載および商用利用に際しては、事前に CSA ジャパンにご相談ください。
+本翻訳の原著作物の著作権は、CSA または執筆者に帰属します。CSA ジャパンはこれら権利者を代理しません。原
+著作物における著作権表示と、利用に関する許容・制限事項の日本語訳は、前ページに記したとおりです。なお、
+本日本語訳は参考用であり、転載等の利用に際しては、原文の記載をご確認下さい。
+
+日本語版作成に際しての謝辞
+「IoT セキュリティのためのブロックチェーン技術の活用」の日本語訳は、CSA ジャパンの「Blockchain ワーキン
+ググループ」に参加するメンバーを中心とした、CSA ジャパン会員の有志により行われました。
+作業は全て、個人の無償の貢献としての私的労力提供により行われました。なお、企業会員からの参加者の貢献に
+は、会員企業としての貢献も与っていることを付記いたします。
+以下に、翻訳に参加された方々の氏名および所属先（企業会員からの参加の場合のみ）を記します。（氏名あいう
+えお順・敬称略）
+阿賀
+勝見
+唐澤
+笹原
+滝江
+西
+守屋
+諸角
+
+誠
+勉
+光彦
+英司
+勇介
+誉
+有晶
+昌宏
+
+Blockchain/Distributed Ledger Technology Working Group | Using Blockchain Technology to Secure the Internet of Things
+© Copyright 2018, Cloud Security Alliance. All rights reserved.
+
+6
+
+ はじめに
+過去 4 年間に、技術専門家、最高デジタル責任者（chief digital officer）、マーケティングマネージャ、
+ジャーナリスト、ブロガー、研究機関が、ブロックチェーン技術を使用したセキュアなトランザクション処
+理とストレージのための新しい分散モデルについて議論し、推進してきた。IDC FutureScape は、2020 年ま
+でに世界貿易金融の 20％がブロックチェーンを組み込むと予測している。
+[1]. Coindesk は、ベンチャーキャピタルが過去数年間にブロックチェーンの新興企業に 18 億ドル以上を
+投資したと報告している。
+[2]. セクター間のブロックチェーン技術の新しいユースケースを特定することに重点を置く Enterprise
+Ethereum Alliance など、コンソーシアムや提携が始まっている。
+ブロックチェーンは、ブロックにグループ分けされた取引の公開および分散台帳で、次のことを約束してい
+る。
+1. デジタル資産の所有権の移転に対するスピード、効率、セキュリティを向上する
+2. 所有権の証明と取引の解消を行う中央の権威者を不要にする
+3. 透明かつ公的に監査可能な台帳を提供することにより、不正行為や腐敗を減らす
+4. 特定の条件に基づいて、信頼できるアクションを自動的に有効にし、安全にし、認証することで、契約を使用
+することの管理コストを削減する（「スマートコントラクト」）
+
+ブロックチェーンの利用に関する重要な課題は、ブロックチェーン技術の統合から利益を得る関連するユ
+ースケースを特定する必要がある。Internet of Things（IoT）は長い間、セキュリティの弱点や課題があ
+り、専門家や組織は IoT を安全にするためにブロックチェーンの使用を検討し始めている。IOTA や
+Trusted IoT Alliance などの組織は、ブロックチェーンを適用して IoT セキュリティに焦点を当て始めて
+いる。
+IoT は、それ自体、消費者の行動やビジネスプロセスを変革している。分散エッジ IoT デバイスは、処理の
+ためにデータを収集し、送信する。IoT システムは、このデータによって、高度なサービス、自動化機能、
+エンドユーザーのための経験を提供する。IoT システムは動的でかつ分散している。これらには、デバイス、
+モバイルアプリケーション、ゲートウェイ、クラウドサービス、分析と機械学習プロセス、ネットワーク
+インフラ、Web サービス、ストレージシステム、フォグレイヤー、ユーザーが含まれる。これらのすべての
+システムは、台帳にトランザクションとして記録できるデータの書き込みと読み取りを行う。
+Cloud Security Alliance の IoT ワーキンググループ（IoT WG）は、2014 年以降、IoT セキュリティのベス
+トプラクティスを文書化することに注力してきた。IoT のセキュリティ問題にブロックチェーン技術を適用す
+ることによる潜在的な利点を考慮して、IoT WG は CSA の Blockchain/Distributed Ledger Technology ワー
+キンググループと一緒に、ブロックチェーンが IoT システムをセキュアにする方法について研究し文書化す
+ることを始めている。このように、この文書では、成熟度の異なる以下の 2 つの技術について説明する：
+
+Blockchain/Distributed Ledger Technology Working Group | Using Blockchain Technology to Secure the Internet of Things
+© Copyright 2018, Cloud Security Alliance. All rights reserved.
+
+7
+
+ • ブロックチェーン： BitCoin、Ethereum、Litecoin、Dash など、急速に進化する暗号通貨のサポート
+を通して、デジタル経済全体に急速な変化と混乱をもたらした技術手段。暗号通貨の基盤としてのブロ
+ックチェーンの成功は、分散台帳技術を使ってシステムと技術を安全にすることを目的とした業界内で
+の新しい研究を生み出した。2017 年には、多くのビジネスイニシアチブが、限られたプロトタイプと
+概念実証（proof-of-concept）の作成にフォーカスし、この複雑な技術を習得するためにほとんどの時
+間を費やしてきた。
+• IoT: ビジネスプロセスやミッション処理の変革をサポートする急速に成熟した一連の技術。IoT は、
+消費者、輸送、エネルギー、ヘルスケア、製造、小売、財務などのセクターにわたって、様々なレベル
+で成熟している。IoT は、コネクティッド・カー、スマートビルディング、産業用制御システム、ドロ
+ーン、ロボットシステムなどの物理デバイスに、エレクトロニクス、ソフトウェア、センサー、アクチ
+ュエータ、ネットワーク接続が組み込まれ、これらのオブジェクトがデータを交換できるようになる。
+このホワイトペーパーでは、ブロックチェーン技術の概要を説明し、IoT 機能をセキュアにする技術として
+ブロックチェーンを使用できるようにする一連のアーキテクチャパターンについて説明する。これらのユー
+スケースの技術的実装は企業によって異なるが、IoT セキュリティに対するブロックチェーンの具体的なユ
+ースケースの例についても調査している。
+
+Blockchain/Distributed Ledger Technology Working Group | Using Blockchain Technology to Secure the Internet of Things
+© Copyright 2018, Cloud Security Alliance. All rights reserved.
+
+8
+
+ ブロックチェーン技術概要
+ブロックチェーンサービス、または単に「ブロックチェーン」は、トランザクションをひとまとめにしてブ
+ロックに格納するトランザクションリポジトリである。"すべてのブロックには、前のブロックのハッシュが
+含まれている。これは、genesis ブロックから現在のブロックまでの一連のブロックをチェーンで接続して
+いることになる"[3]。各ブロックの内容は、記録されたトランザクションのデータの完全性を保証するため
+にデジタル署名されている。
+ブロックチェーンサービスには、次の 3 つの主要コンポーネントが含まれる：
+(1) 自律ノードのネットワーク
+独立したノードは、自律的に正当なトランザクションを生成し、分散台帳に登録する。トランザクション
+を検証するには、中央権限も信頼できる第三者も必要ない。ブロックチェーンサービス（ブロックチェー
+ンプラットフォームとも呼ばれる）のすべてのノードが連携して、台帳の一貫性を維持する。
+各ノードは、コンセンサスアルゴリズムと呼ばれるメカニズムを実行する。コンセンサスアルゴリズムは、
+一連のトランザクションの結果としてノードがブロックチェーンを更新する方法に同意するプロセスである。
+コンセンサスを達成することで、ネットワーク内のノードの大多数が同じ一連のトランザクションを検証す
+ることが保証される。
+分散型コンセンサスの目標は、参加しているシステムの中で十分に多い数の台帳を（ある程度細かい時間間
+隔で）正確かつ最新のものに保つことである。コンセンサスメカニズムは、（a）遡及的に取引を変更するこ
+と（b）意味的に許可されていないトランザクションを実行する（例えば、「二重支出」および暗号非同期設
+定で非所有資産を転送する）。（c）正しいトランザクション要求の受け入れ、及び予約をブロックすること、
+などによって台帳の完全性を損なう可能性のある悪意のあるピアから守っている。
+ブロックチェーンサービスの開発中に選択されたコンセンサスアプローチは、特定の攻撃を防ぐ。これらの
+攻撃緩和は事実上技術的なものではない。例えば、Bitcoin の "Proof of Work"では、ネットワーク内のハ
+ッシュパワーの 51％を制御することに経済的に不利な立場にある。マイニングハッシュレートの 51％を獲
+得することで、攻撃者がコインを 2 倍にしたり、最近の取引履歴を変更する可能性がある。また、ハッシュ
+レートの 51％を取得し、悪意のあるトランザクションを伝播すると、暗号の信頼性が急速に低下し、悪意の
+ある当事者の株式の価値が大幅に低下する。さらに、悪意のある当事者は、自分自身のために利益を生むた
+めに、マイニングのプロセスに向けて単純にハッシュパワーを利用することができる。
+許可された（閉じた）システムでは、経済的阻害要因は存在しない可能性がある。 また、許可されたシス
+テムでは、マイニングの難易度が低いため、ネットワーク内のトランザクションを高速化できる。これら
+の許可されたシステムには、レジリエンス・セーフガード、ハードウェア・ベースのウォレット、ネット
+ワーク・マイナーへのアクセスを制限するアクセス制御、アイデンティティ管理、潜在的な規制当局への
+関与、訴訟、不正行為の犯罪調査を可能にする強力な監査機能を含む伝統的なサイバーセキュリティ管理
+システムを実装しなければならない。
+3 つの主要なメカニズムがブロックチェーンのコンセンサスを提供する：
+• ビザンチンフォールトトレランス（BFT）アルゴリズムは、障害のあるノードに任意の動作（ビザン
+チンフォールト）が発生するような攻撃やソフトウェアエラーを回避するように設計されている。
+BFT [4]は、悪意のある不正行為（ビザンチン）ノードの参加にもかかわらず合意を提供する。しか
+しながら、このアプローチの欠点は、ブロックチェーンネットワークを形成するノード数のスケーラ
+ビリティの限界である[5]。実用的ビザンチンフォールトトレランス（PBFT）[5]を含む BFT への代替
+Blockchain/Distributed Ledger Technology Working Group | Using Blockchain Technology to Secure the Internet of Things
+© Copyright 2018, Cloud Security Alliance. All rights reserved.
+
+9
+
+ アプローチが提案されている。PBFT を現在利用しているブロックチェーンインプリメンテーションの
+例は、Linux Foundation Hyperledger fabric（0.6）と Ripple である。
+• Proof-of-Work（POW）は、Bitcoin と Ethereum で使用され、コンセンサスを確立するための広く知ら
+れたメカニズムである。POW では、単一のノードが他のノードにその結論を提供することができる。
+この結論は、ネットワーク内の他のノードによって検証される。コンセンサスを達成するために、生
+成されたブロックを提出するノードは、計算上困難なタスク（ハッシュ関数に基づく「暗号的に困難
+なパズル」）である、実行した作業の証明も提供しなければならない。POW は優れたネットワーク安
+定性を提供する[6]。しかし、POW は、計算資源が消費されるために特にコストがかかる。「マイナ
+ー」は、成功したブロック生成の対価として付与される暗号通貨の報酬を得るために参加するように
+動機づけられる。
+•
+• Proof-of-Stake（POS）は POW と似ている。ノードがブロックを生成すると報酬が与えられる。しか
+し、このフェーズには少数のノードしか参加できない[7]。実際、蓄積された富（すなわち「ステー
+ク」）に基づいて決定論的に次のジェネレータノードが取り出される。POS に基づくブロックチェー
+ンのマイニングプロセスは、通常、“forgery” あるいは “minting” と呼ばれる。（訳注：どち
+らも「鋳造」を意味する）。PoS を開始したテクノロジは PeerCoin である。
+
+(2)
+
+取引の台帳
+
+データベースはブロック（したがって「ブロックチェーン」）で構成されている。各ブロックには、有効
+なトランザクションのリスト、タイムスタンプ、および現在のブロックと前のブロックをリンクする情報
+が含まれている。各ブロックの先行ブロックへのリンクを連鎖すると、台帳が作成される。
+台帳の中心は、可変サイズのデータを固定サイズの文字列にマップする数学的アルゴリズムである暗号ハッ
+シュである。すべてのトランザクション A, B, C, D はハッシュされ H(A), H(B), H(C), H(D)になる。その
+後、次のハッシュが統合され H(hA|hB), H(hC|hD)になり、マークルツリーを構成する。先頭のハッシュまた
+はマークルツリーのルートは、ブロックヘッダーに統合される。
+
+Block 0 Header
+
+Block 1 Header
+
+Block 2 Header
+
+Previous header hash
+
+Previous header hash
+
+Previous header hash
+
+Merkle root
+
+Merkle root
+
+Merkle root
+
+H(hA|hB)
+
+H(A)
+
+H(B)
+
+H(C)
+
+H(D)
+
+A
+
+B
+
+C
+
+D
+
+H(hC|hD)
+
+Block 1 Transactions
+
+マークルツリーはブロックトランザクションをブロックヘッダーであるマークルルートに接続する
+
+Blockchain/Distributed Ledger Technology Working Group | Using Blockchain Technology to Secure the Internet of Things
+© Copyright 2018, Cloud Security Alliance. All rights reserved.
+
+10
+
+ (3) 分散データベース
+新しいトランザクションが追加されると台帳が作成され、システムのノード間で利用可能になり複製される
+（したがって、「分散型台帳」）。ネットワーク上のすべてのノードは、それぞれデータベースのコピーを
+持ち、すべてのトランザクションの履歴にアクセスできる。
+特定の暗号通貨のブロックチェーンサイズは、IoT や台帳をホストしているデバイス内のストレージ容量
+の要件に左右される。以下の表は、2017 年 8 月 14 日時点で良く知られている暗号通貨のブロックチェー
+ンサイズを示している[30]。
+
+トランザクションの送信とブロックチェーンの構築
+以下は、ブロックチェーントランザクションの一般的な処理フローである。トランザクションがノードに紐
+づけられると、ブロックチェーンサービスは通常次のように実行される[6]：
+1. 新しいトランザクションがすべてのノードにブロードキャストされる。
+2. 各ノードは、新しいトランザクションをブロックに取り込む。
+3. 各ノードは、そのブロックのコンセンサスアルゴリズムで動作する（一般に、この処理はノード処理と
+消費電力の面で高くつく）。
+4. ノードがコンセンサスアルゴリズム処理を完了すると、ノードはブロックと処理結果をすべてのノー
+ドにブロードキャストし、この作業の報酬を受け取る。（Bitcoin の場合、報酬は Bitcoin マイナー
+によって処理され、受け取られた取引手数料である。）
+5. ノードは、その中のすべてのトランザクションが妥当な場合にのみブロックを受け入れる。
+6. ノードは、受け入れられたブロックのハッシュを前のハッシュとして使用して、チェーン内の次のブ
+ロックの作成に取り組み、ブロックの受け入れを行う。
+この技術は新しいものではなく、デジタル署名、暗号化ハッシュアルゴリズム、ピアツーピア接続、分散
+データベースなどが使われている。コンピューティング能力とインターネット速度の向上により分散コン
+ピューティングが可能になるため、これらの個別の技術を効果的に組み合わせたブロックチェーン技術が、
+この状況において必要になる。
+
+Blockchain/Distributed Ledger Technology Working Group | Using Blockchain Technology to Secure the Internet of Things
+© Copyright 2018, Cloud Security Alliance. All rights reserved.
+
+11
+
+ スマートコントラクト
+スマートコントラクトは台帳にある自己実行コードである。スマートコントラクトを使用して、2 人の当事者
+が取引を行う。例えば、一方の当事者はサービスを提供することができ、他方の当事者はそのサービスに支
+払いを行う。スマートコントラクトはトランザクションのルールを実行し、違反に関連する罰則を課すこと
+もできる。
+IoT の環境では、デバイスはブロックチェーン上のコントラクトアドレスに基づいてスマートコントラクト
+とやり取りをするように事前設定できる。これらのデバイスは、お互いの間でトランザクションを開始する
+ことができる。スマートコントラクトはトランザクションの流れを監視し、資金を支払うか行動を許可する
+前に、規則に従っていることを検証する。
+スマートコントラクトを利用する IoT システムの実装者は、誤った使い方の可能性を考慮した処理をコント
+ラクト上で実装する必要がある。例えば、スマートコントラクト開発者が、スマートコントラクトの完了条
+項の検証まで資金を留保するエスクロー要件を実施することができる。その他のスマートコントラクトを利
+用するにあたってのセキュリティに関する考慮事項としては、以下のようなものがある：
+・未完了トランザクションを、そのトランザクションの発行者以外が再実行することという競合状態を回避
+する必要性
+・コントラクトの送信者と受信者の間で再帰呼び出しになっていないことを検証する
+・スマートコントラクトの利用を、許可されたデバイスに限定する
+詳細については、https://consensys.github.io/smart-contract-best-practices/を参照。
+
+オフチェーンストレージソリューション
+ブロックチェーン技術の実装を担当するソリューション開発者は、パブリックブロックチェーンネットワ
+ークに組み入れられた機密保護が存在しないことを認識する必要がある。プライベート・ネットワークや
+許可型ネットワークであっても、オンチェーン上で機微データの保存を可能にするための十分な機密保護
+ツールはない。従って、多くの組織は、ブロックチェーンがトランザクションとしてハッシュを記録して
+いる一方で、生成したデータの保存に使えるオフチェーンストレージソリューションを立ち上げる必要が
+ある。そのソリューションは、あらゆる規制要件または業界ベストプラクティスに従った暗号化を具備す
+る必要がある。
+
+配備オプション
+ブロックチェーンは、以下の 3 つに大別されます[11]。
+• 非許可型(パブリック型)：すべてのノードはトランザクションの読み
+取りや発行が可能であり、さらにコンセンサスプロセスに参加する
+こともできる。POW コンセンサスアルゴリズムは非許可型に最も適し
+ている。
+
+• コンソーシアム型（例：部分許可型）：事前に定義されたノード
+のみコンセンサスプロセスに参加出きる。トランザクションの読
+み取りや実行は、全ノードが実行できる場合もあるが、ノードが
+制限されている場合もある。BFT コンセンサスアルゴリズムは、
+Linux Foundation によって運営されているオープンソースの取り
+組みである Hyperledger のようなコンソーシアム型配備に最も適
+している[13]。
+
+Blockchain/Distributed Ledger Technology Working Group | Using Blockchain Technology to Secure the Internet of Things
+© Copyright 2018, Cloud Security Alliance. All rights reserved.
+
+Distributed IoT Security Applications
+(Integrity, authenticity)
+Encryption Methods (Optional)
+(On-chain, Oﬀ-chain)
+
+Smart Contract Framework
+(Solidity, Rootstock, etc.)
+Interoperability Mechanisms
+(2-way peg, etc.)
+Blockchain Technology
+(Butcoin, Ethereum, etc.)
+Consensus Mechanism
+(PoW, PoS, IoTA, etc.)
+Ledger Storage
+(Cloud API, on-device)
+
+12
+
+ • 許可(プライベート)型：コンセンサスメカニズムとは関係なく、信頼された組織のみが、ブロックチ
+ェーンに向けてトランザクションが発行可能である。プライベート型は、規制業種や同一法人に属す
+る組織間に適している[11]。プロジェクト R3[19]や ChainCore[20]が金融機関に向けて提案している
+ような業界特化型の取り組みは、中央管理によって統治されているプライベートブロックチェーンに
+なる可能性が高い。
+Bitcoin[12]と Ethereum[14]は、分散アプリケーションをサポートすることで普及したパブリック型ブロ
+ックチェーンである。Ethereum は、IoT デバイス間で自律的にトランザクションを発行し合うことを可能
+とするスマートコントラクトを容易に開発するためのプログラミング言語である Solidity を備えている。
+BTC Relay[15]のようなソリューションは、Bitcoin による支払を Ethereum のスマートコントラクト上で
+決済する機能を提供している。
+ブロックチェーンの実装は、ブロックチェーンネットワーク上で、暗号通貨や分散アプリケーション、スマ
+ートコントラクトのようなサービスを構築するためのフレームワークである。そのフレームワークは、使用
+される理論的概念とそれらの組み合わせ方法（例えば、コンセンサスメカニズム、電子署名、暗号化、通信
+特性）を記述している。フレームワークを実装するための技術要素を特定し詳述するかは実装者次第である。
+右上の図は、ブロックチェーンベースの IoT セキュリティソリューションを設計する際に考慮すべき技術要
+素を示している。
+ブロックチェーンは複数の実装が可能であり、それぞれ、異なる利用方法やサービスを提案している。2-way
+peg[9]と呼ばれている、異なるブロックチェーンの機能へのアクセスを可能にする中継の方法によって、異
+なるブロックチェーンネットワーク間で、トラストレスに交換が出来るようになる。Rootstock[10]は、ビッ
+トコインとの 2-way peg を備えた、OSS のスマートコントラクトプラットフォームである。
+
+Blockchain/Distributed Ledger Technology Working Group | Using Blockchain Technology to Secure the Internet of Things
+© Copyright 2018, Cloud Security Alliance. All rights reserved.
+
+13
+
+ ブロックチェーン技術に基づく IoT アーキテクチャ
+ブロックチェーン技術を IoT に適応させるためには、ブロックチェーン技術に基づく IoT アーキテクチ
+ャパターンの検討が必要である。この定義されたパターンには、このセクションで説明するように、３
+つの要素が含まれることが必要である：
+
+コミュニケーションモデル
+コミュニケーションモデルは、ブロックチェーンソフトウェアのインストールについて、IoT ノードへ直接導
+入する場合と、クラウドに置いてアプリケーション・プログラミング・インターフェース（API）経由で IoT
+ノードに導入する場合とについて説明する。以下の図は、IoT エッジデバイスがトランザクションノードソフ
+トウェアを保持し、台帳を格納し、ネットワーク全体でコミュニケーションを維持できるようにする堅牢な
+機能を備えている場合における、ブロックチェーン技術と IoT を組み合わせた一般的なモデルである。
+
+BLOCKCHAIN NETWORK
+IoT
+Transaction Node
+(Including miner)
+
+IoT
+Transaction Node
+
+各々の IoT ノードがブロックチェーン Transaction node として動作
+IoT Transaction Nodes
+前の図では、それぞれの IoT デバイスが台帳を保持し、マイニングを含むブロックチェーントランザクショ
+ンに参加することができる。各デバイスには、秘密鍵が配備されているか、ネットワークトランザクション
+に参加するための秘密鍵を内部で自己生成する機能が含まれている。このエンドステートモデルは、ブロッ
+クチェーンサービスで有効にできる３つの基本機能を提供する：
+• 自律的調整（例えば、コンセンサスや P2P メッセージング）を含む自立型 IoT デバイスネットワーク
+• IoT デバイスが暗号機能を実行するトランザクションを作成できるトランザクションの台帳
+• IoT デバイスに台帳の最新バージョンがある分散データベース
+
+Blockchain/Distributed Ledger Technology Working Group | Using Blockchain Technology to Secure the Internet of Things
+© Copyright 2018, Cloud Security Alliance. All rights reserved.
+
+14
+
+ ただし、ハードウェアの制限により、現時点では IoT においてこのモデルを採用することは難しい。以下の
+課題がある:
+1. 低い処理能力：ブロックチェーンサービスの処理には、処理能力の高い CPU、メモリおよび電力が
+必要である。ブロックチェーンプラットフォームにおける処理能力は主に、POW、スマートコント
+ラクトの実行、暗号プリミティブ処理に消費される。
+2. 小さいストレージ：台帳に追加されるトランザクションの量が増え、少ないトランザクションデータで
+も維持するのが難しくなる。
+3. 制限された接続：IoT デバイスは帯域の小さいインターネットまたは無線アクセスを利用する可能性が
+あり、これにより、台帳のダウンロードや同期中にパフォーマンスの問題が発生する可能性がある。
+IOTA のようないくつかの企業は、小さなセンサーを「ブロックチェーン化」するための、以下を含む新
+しいアプローチを提案している：
+• ハードウェア要件を軽減するためにマイニングプロセスを簡略化する
+• IoT 通信に関連するマイクロトランザクションの実装
+• 軽量な台帳を管理する
+クラウド対応の IoT ブロックチェーンネットワーク
+クラウド対応のブロックチェーンネットワークでは、トランザクションノードとマイニングノードが、クラ
+ウドとオンプレミスの両方に配置される。実装次第で、ノードは、エンタープライズ・サーバ、PC またはス
+マートデバイス（例えば、スマートフォンやタブレット）、クラウドベースの仮想サーバ、十分なハードウ
+ェアリソース（CPU、RAM、ストレージなど）を備えた IoT デバイスとすることができる。
+
+BLOCKCHAIN SERVICE
+Transaction Node
+(Including miner)
+
+Transaction
+Node
+IoT
+Transaction Node
+
+BLOCKCHAIN CLIENTS
+Blockchain Communications
+
+M2M Communications
+
+Blockchain/Distributed Ledger Technology Working Group | Using Blockchain Technology to Secure the Internet of Things
+© Copyright 2018, Cloud Security Alliance. All rights reserved.
+
+API Queries
+
+14
+
+ 限られたハードウェアリソースを持つ IoT デバイスは、ブロックチェーンクライアントとして機能する。
+この場合、分散台帳は保持されない。これらのクライアントは API を介して上流のクラウドベースのブロ
+ックチェーントランザクションノードと通信する。API は主として HTTP REST または JSON RPC のいずれ
+かとなる。
+IoT デバイスは、ブロックチェーンサービスで処理されるためにトランザクションノードに中継されたデー
+タを収集するか、クラウド内で動作するブロックチェーンノードを指定することによってスマートコントラ
+クトトランザクションに参加する。この流れにおいては、IoT デバイスは、依然としてデータに署名するた
+めの秘密鍵を備えている。署名されたデータは、処理のために上流のトランザクションノードに送信される。
+データを安全に送信するためには、IoT デバイスとトランザクションノード間の別の信頼関係が必要である。
+例えば、１対１の関係では、２つのデバイス（IoT デバイスとトランザクションノード）間のホワイトリス
+ト作成と双方向認証を使用することができる。秘密鍵を安全に保存するためにはハードウェアセキュリティ
+を使用する必要もある。
+許可された領域（プライベートブロックチェーンサービス）では、マイニングノードへのアクセスは、許可
+されたオペレータに限定される場合がある。
+コンソーシアム領域（部分的に許可されたブロックチェーンサービス）または許可された領域（プライベー
+トブロックチェーンサービス）では、セキュリティを向上させるため、または規制遵守の目的で、メンバー
+はこのアーキテクチャパターンを実装することを決定できる。
+ビットコインの実装では、このような機能を Simplified Payment Verification (SPV)という名前のシンク
+ライアントを使用して提案している。これは、台帳の完全なコピーは保持しない。これらのシンクライアン
+トは Bitcoin Client API（BCCAPI）を使用してノードと通信する。
+メッセージは、複数の IoT デバイス間で交換することができる。これらのメッセージは、トランザクシ
+ョンに統合されたデータを含む。これらのトランザクションは、トランザクションノードとの交換に参
+加する IoT デバイスによって中継される。IoT デバイス間の通信プロトコルとメッセージフォーマット
+は、ブロックチェーン実装の範囲外である。これらの通信は Message Queue Telemetry Transport
+（MQTT）などの機器間通信のことである。
+
+相互運用性を高めるための充実したエコシステム
+ブロックチェーン技術を取り巻くエコシステムを開発することは、その採用を加速する機会になる。この潜在力のある
+エコシステムは、IoT のブロックチェーンサービスへの統合を簡素化する機能を提供する。
+
+• サービスプロバイダ：Blockcypher などのサービスプロバイダは、IoT とブロックチェーンサービスの
+クライアントおよびサービス間の通信を簡素化する API 機能を提供する。API の仲介は、ブロックチェ
+ーン技術の実装ではなく、サービスの価値に焦点を当てることにより、異なるブロックチェーンサービ
+スと通信する IoT の開発が可能になる。
+• ソリューションプロバイダ：Credits などのソリューションプロバイダは、プライベートブロックチェ
+ーンサービスを迅速に構築するためのフレームワークを提供する。これらのフレームワークはトランザ
+クションノード上で動作する。各ノードは API を介してクライアントからアクセスされる。また、これ
+らのフレームワークは、他のブロックチェーンサービスと連携する機能も提供する。
+
+複数のブロックチェーンサービスの同居
+次のページの図に示すように、それぞれが異なった機能と通貨を持つ複数のブロックチェーンサービスにフ
+ォーカスした考え方があり、またその数は増え続けていく。これらのブロックチェーンサービスは補完的な
+機能を果たす。各ブロックチェーンサービスは、ネイティブに、またはサードパーティが提供する API を使
+用して、結合することができる。
+Blockchain/Distributed Ledger Technology Working Group | Using Blockchain Technology to Secure the Internet of Things
+© Copyright 2018, Cloud Security Alliance. All rights reserved.
+
+15
+
+ Blockchain
+Node
+
+Third-Party API
+
+BLOCKCHAIN NETWORK 1
+
+BLOCKCHAIN NETWORK 2
+
+BLOCKCHAIN NETWORK 3
+各々のブロックチェーンサービスは異なったコンテキストで走る。たとえば、ホームネットワーク、
+企業ネットワーク、インターネットである。
+
+Blockchain/Distributed Ledger Technology Working Group | Using Blockchain Technology to Secure the Internet of Things
+© Copyright 2018, Cloud Security Alliance. All rights reserved.
+
+16
+
+ ブロックチェーン技術に基づいた IoT アーキテクチャのパターン
+CSA IoT WG およびブロックチェーン／分散台帳技術 WG は、複数のブロックチェーンサービス内にある IoT
+クライアントが協働できる以下のシステムを提案している。
+
+BLOCKCHAIN SERVICE
+
+Blockchain Network 3
+(Bitcoin)
+Blockchain Network 4
+
+Transaction
+Node
+
+Blockchain Network1
+
+(Ethereum)
+
+Blockchain Network 2
+API Provider
+
+BLOCKCHAIN CLIENTS
+Blockchain Communications
+
+M2M Communications
+
+API Queries
+
+ブロックチェーンサービス１：法人専用サービス:
+• トランザクションノードは、クラウドにホスティングされた法人のコンピュータ、あるいはサーバである
+• IoT ブロックチェーンクライアントは、企業エリア内に配備されたセンサーとスマートデバイスである
+ブロックチェーンサービス２：消費者向けスマートホームサービス：
+• トランザクションノードは、パソコンとその他のデバイス、またはクラウドサービスである
+• IoT ブロックチェーンクライアントは、冷蔵庫、温度センサー、セキュリティカメラといったスマートデバイ
+スである
+IoT デバイスがブロックチェーンサービスのクライアントとなるアーキテクチャは、ブロックチェーン技術
+の実装に向けた産業界の取り組みに主に採用されている。
+
+Blockchain/Distributed Ledger Technology Working Group | Using Blockchain Technology to Secure the Internet of Things
+© Copyright 2018, Cloud Security Alliance. All rights reserved.
+
+17
+
+ IoT セキュリティに向けたブロックチェーン技術の選択
+ブロックチェーン技術は、IoT デバイスをセキュアにするのに役立つ。IoT デバイスは、パブリックブロック
+チェーンサービスを使用するか、クラウド内のプライベートブロックチェーンノードと安全な API を介して
+通信するように構成できる。IoT システムのセキュリティフレームワークにブロックチェーン技術を組み込
+むことにより、IoT デバイスは安全に互いを検出し、分散鍵管理技術を使用してマシン間のトランザクショ
+ンを暗号化し、ソフトウェアイメージの更新とポリシーの更新の完全性と真正性を検証することができる。
+このレポートで説明しているアーキテクチャパターンが実現すれば、それによって IoT デバイスは API を介
+してブロックチェーントランザクションノードと通信し、制約のあるデバイスであってもブロックチェーン
+サービスに参加できる。
+セキュリティを確実にするために、特定のブロックチェーンサービスへ接続しようとする IoT デバイスのブ
+ートストラップ中、注意が必要となる。以下は、IoT デバイスのトランザクションノードへ参加することを
+サポートする IoT デバイスの検出の例である。IoT デバイスは、まずトランザクションノードとして追加さ
+れるための認可を証明するための資格情報を付与される必要がある。この資格情報の付与は、特定の IoT デ
+バイスエコシステムの脅威に対して保護されている安全な環境で実施する必要がある。
+このことを実現することを可能にするブロックチェーン技術と市場のイニシアチブを検討した結果、ブロッ
+クチェーン技術を使う IoT をセキュアにするために検討すべき以下の 5 つ機能が浮かび上がる：
+1. スケーラブルな IoT の検出
+2. 信頼できる通信
+3. メッセージ認証/署名（Chain of Things [27]）
+4. IoT の構成と更新
+5. セキュアなファームウェアイメージの配布と更新
+1. スケーラブルな IoT の検出
+スマートシティと大企業の IoT の配備は、協働すべき数千〜数万の IoT デバイスをアクティベーションする
+ことになる[28]。多くの場合、これらのデバイスは自律的なマシンツーマシントランザクションによって、
+お互いに協調し合う。相互に作用するための正しい接続相手デバイス、正しいサービスをデバイスが発見で
+きることも必要となる。IoT システムは、ブロックチェーンの実装が、パブリック、プライベートのどちらで
+あってもスケーラブルな IoT の検出を利用できる。
+たとえば Bitcoin では、ハードコードされた Named DNS Seeds のセットが、新しいユーザーやデバイスにブ
+ートストラップサービスを提供する。これらの DNS Seeds は、IoT デバイス内で事前設定できる。IoT デバ
+イスはこれらのアドレスを照会し、完全なノードの IP アドレスを提供される。 IoT デバイスは、それ自体
+をノードに登録し、ネットワーク上の他の IoT デバイスのリストを要求する。 プロビジョニングされると、
+IoT デバイスは、ピアツーピア通信を開始し、ピア発見情報をネットワーク上の隣接デバイスに示すことが
+できる。
+Named DNS Seed アドレスを事前設定（ハードコーディング）することで、MITM（man-in-the-middle）攻撃を
+軽減する。 IoT デバイスは、複数の DNS Seed から情報を受信した後、登録するノードを選択する。ルートサ
+ーバの名前解決を保護し、DNS スプーフィング攻撃を軽減するためには、DNS Sec を使用しなければならない。
+Named DNS Seed アドレスはファームウェアにハードコードする必要がある。このホワイトペーパーのケース
+５で、ファームウェアイメージの配布と更新を保護する方法を示す。
+プライベートブロックチェーンサービスにおいても、ブートストラップと IoT デバイスのネットワークへの
+登録をサポートすることができる。トランザクションノードは、信頼できるノードリストを提供する前に IoT
+デバイスを認証する。IoT デバイスは参加のための資格情報を提供され、それには以下が含まれる
+Blockchain/Distributed Ledger Technology Working Group | Using Blockchain Technology to Secure the Internet of Things
+© Copyright 2018, Cloud Security Alliance. All rights reserved.
+
+18
+
+ 1. IoT デバイスに（予め）インストールされているセキュリティ資格情報、または、セットアップ中に
+内部的に自己生成されるセキュリティ資格情報は、ブロックチェーンの実装の一部となる安全なプロ
+セスを使用して生成と提供を行う必要がある。
+2. IoT デバイスの所有者、または設置担当技術者によって提供される資格情報は、その IoT の特定の資格
+情報を取得するため、セキュリティサーバへのデバイスの登録を実施する
+どちらの場合でも、正しい IoT デバイスだけをブロックチェーンサービスに追加するのを確実にするた
+めに登録プロセスを実施する必要がある。すべての通信の記述は、機密性と完全性を確保するために認
+証され、暗号化されることが必要である。
+ブロックチェーンにデバイス ID を登録する機能の詳細については、Trusted IoT Alliance を参照し、ブ
+ロックチェーンにモノの ID を登録するために開発されたブロックチェーン API を参照のこと。
+2. トラステッドコミュニケーション
+
+BLOCKCHAIN NETWORK
+Transaction
+Node
+
+3. Transaction is validated, added to a
+new block, then propagated.
+
+2. Transaction transmitted to
+the blockchain network
+
+1. Data exchange using secure
+channel communication
+
+BLOCKCHAIN CLIENTS
+Blockchain Communications
+
+M2M Communications
+
+API Queries
+
+例えば、パブリックデプロイメントなど、いくつかの文脈では、IoT デバイスは、台帳に格納されるトラン
+ザクションを構築するために必要なデータを交換するための安全な通信チャネルの使用を必要とする。この
+台帳は、公開鍵の格納にも使用できる。
+情報交換を機密にしなければならない場合、IoT 装置（送信側）は、ブロックチェーンサービスに格納された
+受信側 IoT 装置の公開鍵を使用し、IoT 装置（受信側）に暗号化メッセージを送信する。
+
+Blockchain/Distributed Ledger Technology Working Group | Using Blockchain Technology to Secure the Internet of Things
+© Copyright 2018, Cloud Security Alliance. All rights reserved.
+
+19
+
+ この保護されたトランザクションを実現するために、IoT 送信側は、IoT 受信側の公開鍵をブロックチェーン
+台帳から取得するようにそのトランザクションノードに要求する。IoT 送信側は、IoT 受信側の公開鍵を使用
+してメッセージを暗号化する。
+受信側だけが秘密鍵でメッセージを復号できる。コンテンツ暗号化鍵（Content Encryption Keys
+（CEK））やトラフィック暗号化鍵（Traffic Encryption Keys（TEK））などのトランザクションを保護す
+るための鍵を作成するには、楕円曲線ディフィー・ヘルマン(Elliptic Curve Diffie Hellman（ECDH）)な
+どの鍵共有アルゴリズムを使用する必要がある。
+
+このユースケースでは、ブロックチェーンサービスは分散 PKI（distributed public key infrastructure）
+[29]として機能する。 公開鍵はトランザクション内に格納される。つまり、新しい IoT デバイスがプライベ
+ートブロックチェーンまたはパブリックブロックチェーンサービス（前のセクションを参照）に登録される
+と、新しいトランザクションが作成される。このトランザクションは、公開鍵を含む IoT プロパティで構成
+される。 IoT デバイスが証明書を更新する必要がある場合、再登録が行われる。失効した証明書をトランザ
+クションとしてブロックチェーンサービスに追加することもできる。 台帳に記録された安全なトランザクシ
+ョン履歴は、IoT デバイス鍵の一貫性を提供する。
+
+Blockchain/Distributed Ledger Technology Working Group | Using Blockchain Technology to Secure the Internet of Things
+© Copyright 2018, Cloud Security Alliance. All rights reserved.
+
+20
+
+ ブロックチェーン実装には、複数の種類の暗号鍵が使用される。ブロックチェーントランザクションを保護
+するために使用される鍵は、しばしばウォレット鍵と呼ばれ る。このユースケースで説明された鍵は
+Identity Key を表し、IoT デバイス間の通信を保護するためにトラフィック暗号化キー（TEK）またはコンテ
+ンツ暗号化キー（CEK）を生成するために使用できる。
+• IoT アイデンティティ鍵 ：IoT デバイス間のメッセージコンテンツおよびトラフィックフローの暗号
+化のためのキーマテリアルを生成するために使われる非対称鍵ペア
+• ウォレット鍵：台帳に格納されたトランザクションを保護するために使われる：IoT アイデンティテ
+ィ鍵も含まれる
+3. 半自動型 M2M（Machine-to-Machine）操作
+IoT 技術の実現には、ひとつの設定したゴールに向けて、半自動的な方法の中で共に連携して動作するマシ
+ンの能力が重要となる。スマートコントラクト機能を使うことによって、ブロックチェーンは、これらの
+自律型トランザクションのセキュリティを実現する役割を果たすことができる。
+スマートコントラクトは、ルール、罰則、契約条件を含むように書くことができる。エッジ IoT デバイスは、
+スマートコントラクトと対話し、ピアデバイスおよび/またはサービスとの契約を締結するための API を用
+いて構成することができる。各トランザクションは、実行前に契約条件を満たす必要があり、すべてのトラ
+ンザクションはブロックチェーンに書き込まれる。
+スマートコントラクトは、誰（どの IoT デバイス）がトランザクションに参加できるかのアクセス制限を実
+施できる。各トランザクションは、IoT ノードのウォレット鍵で署名され、ウォレット鍵はハードウェアセ
+キュリティコンテナに格納されなければならない。ブロックチェーン上のトランザクション記録は、トラン
+ザクションが後で否認されないことを保証する（例えば、サービスプロバイダの IoT デバイスが利用者の
+IoT デバイスとのトランザクションに入る場合）。
+4. IoT 設定とアップデートコントロール
+より多くの IoT デバイスが、最初からクラウドサービスに接続されるにつれて、信頼があり安全な設定に関
+してブロックチェーンは有望な技術となる。以下に、３つのセキュリティアプローチを示す：
+1. 台帳は、検証されたファームウェアの最新バージョンや設定の詳細など、IoT プロパティをホストでき
+る。ブートストラップの間、IoT デバイスは、トランザクションノードに、設定を台帳から取得するよ
+うに要求する。パブリック台帳の内容の分析により、IoT ネットワークのトポロジーが読み取られない
+ように、設定は台帳内で暗号化される必要がある。
+2. 台帳は、各 IoT デバイスの最新の設定ファイルのハッシュ値をホストすることができる。IoT デバイスは、クラ
+ウドサービスから毎晩（または設定された時間）最新の信頼できる設定ファイルをダウンロードし、トランザク
+ションノード API を使用して、ブロックチェーンに格納されているハッシュ値を入手して照合する。これにより、
+管理者は定期的に不正な設定を消去し、新しい設定でネットワーク内の IoT デバイスを再起動することができる。
+
+3. IoT デバイスのファームウェアイメージに、上記の＃2 で説明したものと同じプロセスを適用でき
+るが、IoT デバイスの側で、帯域幅の容量の追加が必要となる可能性がある。
+
+ 5. 安全なファームウェアイメージの配布と更新
+ブロックチェーン技術は、クラウドサービスプロバイダから既知の信頼できる設定のダウンロードをサポート
+するのと同様に、IoT デバイスの信頼できるイメージングプロセスをサポートすることもできる。IoT デバイ
+ス開発者は、IoT デバイスファームウェアを作成することによって、独自のブロックチェーンを実装したり、
+パブリックブロックチェーンを使用したりすることができる。開発者は、そのデバイスファミリの最新の信頼
+できるイメージをハッシュし、そのハッシュをブロックチェーンにロードすることができる。この方法は、以
+下の 3 つの方法で IoT デバイスのセキュリティ強化をサポートする：
+1. IoT デバイスは、新しいファームウェアイメージを定期的にダウンロードするよう API を介して設定す
+ることができる。ほとんどの IoT デバイスは、データを保持したりメモリに保存する必要がないため、
+必要に応じて上書きすることが可能である。たとえば、ベンダーのブロックチェーンに対してイメージ
+ハッシュを検証することで、イメージ更新プロセスを毎日または毎週に設定することもできる。
+2. IoT デバイスは、ブロックチェーンベースのイメージ更新プロセスを使用して、ベンダーが提供するすべて
+のアップデートを検証できる。
+3. IoT デバイスは、上記の方法 1 または 2 のどちらかを使用してすべての更新を検証し、また、デバイス
+所有者に（安全な方法を使用して）ファームウェア更新の承認を要求することができる。
+IoT メーカは、ウェブサイトに公開するのではなく、台帳にファームウェアのデジタル署名を保存すること
+によって、現行の標準的なソフトウェア署名の方法を改善する必要がある。更新を適用する前に、IoT デバ
+イスは、新ファームウェアのデジタル署名を台帳から取得し、 メンテナンス用公開鍵を使用して検証する。
+このメンテナンス用公開鍵は、ファブリック/ハードウェアレベルに組み込むことができる（変更/更新機能
+なし）。
+警告：製造元のメンテナンス用秘密鍵は、すべてのファームウェアを危険にさらさないように保護する必要
+がある。 秘密鍵を取得する攻撃者は、一見「有効な」デジタル署名を持つ悪質なファームウェアを利用する
+可能性がある。
+製造元がすべてのデバイスの公開鍵を変更するプロセスには、莫大な労力が必要となる。
+ファームウェアの評価に基づくアップデート（Chain of Things [27]）：
+台帳のトランザクション履歴機能は、専門家のコミュニティからの新しいファームウェアの記述を取り込ん
+でくることができるので、マルウェアに感染したファームウェアやバックドアが仕掛けられたファームウェ
+アがインストールされることを回避し、ファームウェアの信頼性を向上させることができる。
+IoT デバイスの所有者/管理者は、ファームウェアの評価が台帳の一定の賛成意見のレベルに達した時に IoT
+が自動更新するように設定する必要がある。ブロックチェーンサービスにおける IoT デバイスのこの「受け
+入れ(acceptance)」動作は、台帳のデバイスのファームウェア評価をベースにすることができる結果、次の
+ような利点がある：
+
+Blockchain/Distributed Ledger Technology Working Group | Using Blockchain Technology to Secure the Internet of Things
+© Copyright 2018, Cloud Security Alliance. All rights reserved.
+
+21
+
+ • ブロックチェーンサービスへの脆弱なデバイスの接続を抑止する
+• IoT デバイスのセキュリティ更新プロセスを実施する
+• ブロックチェーンサービスに必要な最小限のセキュリティ要件を定義する
+
+IoT におけるブロックチェーンセキュリティサービスのまとめ
+
+1
+IoT デバイス製造者
+デバイス登録
+
+ブロックチェーンに
+書き込まれる
+配布用公開鍵の生成
+
+3
+ネットワーク運用 /
+セキュリティ運用センター
+
+• 安全な施設での実行
+• ハードウェアに組み
+ファームウェア更新
+
+込むための配布用秘
+
+ポリシー更新
+
+密鍵の生成
+
+検定
+取り消し/更新
+
+更新はブロックチェーンに
+ハッシュされ書き込まれる
+
+トランザクションクラウド
+
+2
+全体設定
+ブロックチェーン・
+ネットワーク上のブ
+ートストラップ
+• 安全な施設での実行
+• 信頼されたノードリストと DNS
+サーバの設定
+• IoT 識別鍵の配布/生成
+• API 鍵の配布
+
+API 接続
+(IoT デバイス/トランザクションノード))
+
+運用環境
+
+暗号化 P2P
+通信
+
+Blockchain/Distributed Ledger Technology Working Group | Using Blockchain Technology to Secure the Internet of Things
+© Copyright 2018, Cloud Security Alliance. All rights reserved.
+
+22
+
+ 結論
+IoT ソリューションを実装している組織は、IoT に対する固有の脅威を緩和するのに十分なセキュリティの
+技術と対処法を見つけ出すという課題に常にさらされている。ブロックチェーン技術は、これらの課題に対
+処する上で重要な役割を果たすことが期待される。
+一部のセキュリティベンダーは、これらのサービスの提供を開始する可能性があるが、ブロックチェーンの
+実装によって提供される完全性と真正性のサービスをすぐに活用することが可能である。
+この文書では、ブロックチェーン技術を使用して接続されたデバイスを保護しようとする際に考慮すべき機
+能について説明してきた。
+しかし、IoT のハードウェアの制約から、数十万個以上の IoT デバイスのコンテキストでは、これらのデバ
+イスの多くはトランザクションノード（トランザクションの生成、コンセンサスの提供など）として機能し
+ない可能性があると結論付けており、安全なブロックチェーンの対象範囲外になる。
+多くのデバイスは、ネットワークの上流のトランザクションノードからの API または特殊な仲介により、ブ
+ロックチェーンサービスによって提供されるセキュリティおよびその他の機能を有効に活用するこができる。
+これらの上流機能を使用して、IoT デバイス（構成および更新の制御、安全なファームウェア更新）および
+通信（IoT 検出、信頼できる通信、メッセージ認証/署名）を保護することができる。
+この文書が、ブロックチェーンという機会を利用したビジネスリーダーや開発者を刺激し、IoT のセキュ
+リティを確保するためにこの技術の機能を拡張していくことを期待している。
+
+Blockchain/Distributed Ledger Technology Working Group | Using Blockchain Technology to Secure the Internet of Things
+© Copyright 2018, Cloud Security Alliance. All rights reserved.
+
+23
+
+ REFERENCES
+[1] IDC FutureScape https://www.idc.com/url.do?url=/getfile.dyn?containerId=US42259417&attachmentId=47254824&ele
+mentId=54425583&term=&position=1&page=1&perPage=50&id=b28d2b1c-ddd5-4e60-a2c2-de3a4f7ee253
+
+[2] Bitcoin Venture Capital https://www.coindesk.com/bitcoin-venture-capital/
+[3] Blockchain https://en.bitcoin.it/wiki/Block_chain
+[4] Leslie Lamport, Robert Shostak, and Marshall Pease. The Byzantine generals problem. ACM Trans. Program. Lang. Syst.,
+
+4:382–401, July 1982. http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.126.9525&rep=rep1&type=pdf
+[5] Miguel Castro and Barbara Liskov. Practical Byzantine fault tolerance and proactive recovery. ACM Trans. Comput. Syst.,
+20(4):398–461, November 2002. http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.84.6725&rep=rep1&type=pdf
+
+[6] Nakamoto, Satoshi. “Bitcoin: A peer-to-peer electronic cash system.” (2008): 28. https://bitcoin.org/bitcoin.pdf
+
+[7] Vasin, Pavel. “Blackcoin’s proof-of-stake protocol v2.” (2014) https://blackcoin.co/blackcoin-posprotocol-v2-whitepaper.pdf
+[8] What is IOTA? https://iota.readme.io/v1.1.0/docs
+[9] Trustless exchange and pegging of BTC in Ethereum https://medium.com/@ConsenSys/taking-stockbitcoin-and-ethereum-4382f0a2f17#.h6nhib6ql
+[10] Rootstock http://www.rsk.co/
+[11] On Public and Private Blockchains https://blog.ethereum.org/2015/08/07/on-public-and-private-blockchains/
+
+[12] Bitcoin https://bitcoin.org/
+[13] The Quest for Scalable Blockchain Fabric: Proof-of-Work vs. BFT Replication http://vukolic.com/iNetSec_2015.pdf
+
+[14] Ethereum https://www.ethereum.org/
+[15] BTC Relay http://btcrelay.org/
+[16] Ethereum Blockchain as a Service now on Azure https://azure.microsoft.com/fr-fr/blog/ethereumblockchain-as-a-service-now-on-azure/
+[17] Hyperledger https://www.hyperledger.org/
+[18] IBM Blockchain on Bluemix https://www.ibm.com/blockchain/offerings.html
+[19] Project R3 https://r3cev.com/
+[20] Chain Core https://chain.com/technology/
+[21] Thin Client Security https://en.bitcoin.it/wiki/Thin_Client_Security
+Blockchain/Distributed Ledger Technology Working Group | Using Blockchain Technology to Secure the Internet of Things
+© Copyright 2018, Cloud Security Alliance. All rights reserved.
+
+24
+
+ [22] BCCAPI (Bitcoin Client API) https://en.bitcoin.it/wiki/BCCAPI
+[23] Machine-to-Machine https://en.wikipedia.org/wiki/Machine_to_machine
+[24] Blockcypher https://www.blockcypher.com/
+[25] Credits http://credits.vision/
+[26] Drivechains sidechains and hybrid 2-way peg designs http://www.the-blockchain.com/docs/Drivechains%20
+sidechains%20and%20hybrid%202-way%20peg%20designs%20-%20Sergio%20Lerner%20-%202016.pdf
+
+[27] Chain of Things http://www.chainofthings.com/
+[28] Gartner Says 8.4 Billion Connected “Things” Will Be in Use in 2017, Up 31 Percent From 2016
+http://www.gartner.com/ newsroom/id/3598917
+[29] Decentralized Public Key Infrastructure http://www.weboftrust.info/downloads/dpki.pdf
+[30] Cryptocurrency Statistics https://bitinfocharts.com/
+
+Blockchain/Distributed Ledger Technology Working Group | Using Blockchain Technology to Secure the Internet of Things
+© Copyright 2018, Cloud Security Alliance. All rights reserved.
+
+25
+
+ 
